@@ -61,19 +61,11 @@
 					<div class="col-6">
 						<div class="form-group">
 							<label class="form-label">Tanggal Kematian</label>
-							<input required type="date" class="form-control" name="tanggal_kematian">
+							<input  type="date" class="form-control" name="tanggal_kematian">
 						</div>
 						<div class="form-group">
 							<label class="form-label">Alamat</label>
 							<input required type="text" class="form-control" name="alamat">
-						</div>
-						<div class="form-group">
-							<label class="form-label">Nama Bapak</label>
-							<input required type="text" class="form-control" name="nama_bapak">
-						</div>
-						<div class="form-group">
-							<label class="form-label">Nama Ibu</label>
-							<input required type="text" class="form-control" name="nama_ibu">
 						</div>
 						<div class="form-group">
 							<label class="form-label">Pekerjaan</label>

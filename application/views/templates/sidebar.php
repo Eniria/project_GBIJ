@@ -54,6 +54,12 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('Baptis'); ?>">
+                    <i class="fas fa-fw fa-bible"></i>
+                    <span>Baptis</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Pendeta') ?>">
                     <i class="fas fa-fw fa-bible"></i>
                     <span>Pendeta</span></a>

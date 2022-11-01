@@ -32,7 +32,15 @@
 						</div>
 						<div class="form-group">
 							<label class="form-label">Nama</label>
-							<input required type="text" class="form-control" name="nama">
+							<br>
+							<select name="id_jemaat" id="" class="form-control">
+								<option value="" disabled selected>Pilih Nama</option>
+								<?php
+								foreach ($jemaat as $j) {
+									echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+								}
+								?>
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="form-label">Jenis Kelamin</label>

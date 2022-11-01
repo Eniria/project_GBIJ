@@ -78,7 +78,6 @@
 							<tr>
 
 								<td><?= $no++ ?></td>
-								<td><?= $PG->no_kk  ?></td>
 								<td><?= $PG->nik  ?></td>
 								<td><?= $PG->nama  ?></td>
 								<td><?= $PG->jenis_kelamin ?></td>
@@ -88,7 +87,7 @@
 								<td><?= $PG->jabatan  ?></td>
 								<td><?= $PG->alamat  ?></td>
 								<td><?= $PG->status_pernikahan  ?></td>
-								<td><img src="<?= base_url() . '/foto/' . $PG->foto ?>" width="100px;"></td>
+								<td><img src="<?= base_url() . '/foto/' . $PG->foto ?>" width="70px;"></td>
 								<td>
 									<a href="<?= site_url("PengurusGereja/ubah/$PG->id_pengurusGereja") ?>" class="btn btn-warning btn-sm">
 										<i class="fa fa-pencil"></i>

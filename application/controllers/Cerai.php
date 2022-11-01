@@ -5,6 +5,9 @@ class Cerai extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->userdata('email')){
+			redirect('auth');
+		}
 		$this->load->model("ModelCerai");
 	}
 
@@ -27,9 +30,18 @@ class Cerai extends CI_Controller
 	//untuk me-load tampilan form tambah barang
 	public function tambah()
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view("content/cerai/v_add_cerai");
+		$dataCerai = $this->ModelCerai->getAll();
+		$data = array(
+			"cerais" => $dataCerai
+		);
+
+		$data['title'] = 'Tambah Data Cerai';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view("content/cerai/v_add_cerai", $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -52,7 +64,6 @@ class Cerai extends CI_Controller
 			$no_surat_cerai = $this->input->post('no_surat_cerai', TRUE);
 			$nama_pria = $this->input->post('nama_pria', TRUE);
 			$nama_wanita = $this->input->post('nama_wanita', TRUE);
-			$tempat_cerai = $this->input->post('tempat_cerai', TRUE);
 			$tanggal_cerai = $this->input->post('tanggal_cerai', TRUE);
 			$alasan_cerai = $this->input->post('alasan_cerai', TRUE);
 
@@ -60,7 +71,6 @@ class Cerai extends CI_Controller
 				'no_surat_cerai' => $no_surat_cerai,
 				'nama_pria' => $nama_pria,
 				'nama_wanita' => $nama_wanita,
-				'tempat_cerai' => $tempat_cerai,
 				'tanggal_cerai' => $tanggal_cerai,
 				'alasan_cerai' => $alasan_cerai,
 				'foto' => $foto
@@ -83,8 +93,8 @@ class Cerai extends CI_Controller
 	{
 		$this->load->library('dompdf_gen');
 
-		// // $dataCerai['Cerai'] = $this->ModelCerai->get_data('cerai');
-		// $this->load->view('content/cerai/pdf_cerai', $dataCerai);
+		$dataCerai['Cerai'] = $this->ModelCerai->get_data('cerai');
+		$this->load->view('content/cerai/pdf_cerai', $dataCerai);
 
 		$paper_size = 'A4';
 		$orientation = 'potrait';
@@ -100,8 +110,12 @@ class Cerai extends CI_Controller
 
 	public function ubah($id)
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
+		$data['title'] = 'Ubah Data Cerai';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$cerai = $this->ModelCerai->getByPrimaryKey($id);
 		$data = array(
 			"cerai" => $cerai,
@@ -111,6 +125,7 @@ class Cerai extends CI_Controller
 	}
 	public function update()
 	{
+		
 		$config['upload_path'] = './foto/';
 		$config['allowed_types'] = "gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp";
 		$config['max_size'] = 10000;
@@ -128,7 +143,6 @@ class Cerai extends CI_Controller
 			$no_surat_cerai = $this->input->post('no_surat_cerai', TRUE);
 			$nama_pria = $this->input->post('nama_pria', TRUE);
 			$nama_wanita = $this->input->post('nama_wanita', TRUE);
-			$tempat_cerai = $this->input->post('tempat_cerai', TRUE);
 			$tanggal_cerai = $this->input->post('tanggal_cerai', TRUE);
 			$alasan_cerai = $this->input->post('alasan_cerai', TRUE);
 			$id = $this->input->post('id_cerai');
@@ -137,7 +151,6 @@ class Cerai extends CI_Controller
 				'no_surat_cerai' => $no_surat_cerai,
 				'nama_pria' => $nama_pria,
 				'nama_wanita' => $nama_wanita,
-				'tempat_cerai' => $tempat_cerai,
 				'tanggal_cerai' => $tanggal_cerai,
 				'alasan_cerai' => $alasan_cerai,
 				'foto' => $foto

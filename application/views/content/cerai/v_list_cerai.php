@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>List Data Perceraian</title>
+	<title>Ubah Data Perceraian</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -65,7 +65,6 @@
 							<th width="13%">No Surat Pernikahan</th>
 							<th width="12%">Nama Laki-laki</th>
 							<th width="12%">Nama Perempuan</th>
-							<th width="12%">Tempat Perceraian</th>
 							<th width="12%">Tanggal Perceraian</th>
 							<th width="12%">Alasan Percerian</th>
 							<th width="12%">Foto/File</th>
@@ -83,7 +82,6 @@
 								<td><?= $c->no_surat_cerai  ?></td>
 								<td><?= $c->nama_pria  ?></td>
 								<td><?= $c->nama_wanita  ?></td>
-								<td><?= $c->tempat_cerai ?></td>
 								<td><?= $c->tanggal_cerai ?></td>
 								<td><?= $c->alasan_cerai ?></td>
 								<td><img src="<?= base_url() . '/foto/' . $c->foto ?>" width="100px;"></td>

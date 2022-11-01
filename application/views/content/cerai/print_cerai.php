@@ -16,7 +16,6 @@
                 <th>No Surat</th>
                 <th>Nama Pria</th>
                 <th>Nama Wanita</th>
-                <th>Tempat Perceraian</th>
                 <th>Tanggal Perceraian</th>
                 <th>Alasan Percerian</th>
                 <th>Foto/File</th>
@@ -31,7 +30,6 @@
                     <td><?= $c->no_surat_cerai  ?></td>
                     <td><?= $c->nama_pria  ?></td>
                     <td><?= $c->nama_wanita  ?></td>
-                    <td><?= $c->tempat_cerai ?></td>
                     <td><?= $c->tanggal_cerai ?></td>
                     <td><?= $c->alasan_cerai ?></td>
                     <td><img src="<?= base_url() . '/foto/' . $c->foto ?>" width="70px;"></td>

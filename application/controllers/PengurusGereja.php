@@ -5,7 +5,11 @@ class PengurusGereja extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('email')) {
+			redirect('auth');
+		}
 		$this->load->model("ModelPengurusGereja");
+		$this->load->model("ModelJemaat");
 	}
 
 	public function index()
@@ -25,9 +29,18 @@ class PengurusGereja extends CI_Controller
 	//untuk me-load tampilan form tambah barang
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$data['jemaat'] = $this->ModelJemaat->getAll();
+		$dataPengurusGereja = $this->ModelPengurusGereja->getAll();
+		$data = array(
+			"PengurusGerejas" => $dataPengurusGereja
+		);
+		$data['title'] = 'Tambah Data Pengurus Gereja';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
-		$this->load->view("content/PengurusGereja/v_add_pengurusGereja");
+		$this->load->view("content/PengurusGereja/v_add_pengurusGereja", $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -47,7 +60,6 @@ class PengurusGereja extends CI_Controller
 		} else {
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
-			$no_kk = $this->input->post('no_kk', TRUE);
 			$nik = $this->input->post('nik', TRUE);
 			$nama = $this->input->post('nama', TRUE);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
@@ -59,7 +71,7 @@ class PengurusGereja extends CI_Controller
 			$status_pernikahan = $this->input->post('status_pernikahan', TRUE);
 
 			$data = array(
-				'no_kk' => $no_kk,
+
 				'nik' => $nik,
 				'nama' => $nama,
 				'jenis_kelamin' => $jenis_kelamin,
@@ -81,7 +93,7 @@ class PengurusGereja extends CI_Controller
 	}
 	public function print()
 	{
-		$dataPengurusGereja ['PengurusGereja']= $this->ModelPengurusGereja->getAll();
+		$dataPengurusGereja['PengurusGereja'] = $this->ModelPengurusGereja->getAll();
 		$this->load->view('content/PengurusGereja/print_pengurus', $dataPengurusGereja);
 	}
 
@@ -89,8 +101,12 @@ class PengurusGereja extends CI_Controller
 
 	public function ubah($id)
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
+		$data['title'] = 'Ubah Data';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$PengurusGereja = $this->ModelPengurusGereja->getByPrimaryKey($id);
 		$data = array(
 			"PengurusGereja" => $PengurusGereja,
@@ -114,7 +130,6 @@ class PengurusGereja extends CI_Controller
 		} else {
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
-			$no_kk = $this->input->post('no_kk', TRUE);
 			$nik = $this->input->post('nik', TRUE);
 			$nama = $this->input->post('nama', TRUE);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
@@ -127,7 +142,6 @@ class PengurusGereja extends CI_Controller
 			$id = $this->input->post('id_pengurusGereja');
 
 			$data = array(
-				'no_kk' => $no_kk,
 				'nik' => $nik,
 				'nama' => $nama,
 				'jenis_kelamin' => $jenis_kelamin,

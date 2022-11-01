@@ -5,6 +5,9 @@ class Pendeta extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->userdata('email')){
+			redirect('auth');
+		}
 		$this->load->model("ModelPendeta");
 	}
 
@@ -25,9 +28,17 @@ class Pendeta extends CI_Controller
 	//untuk me-load tampilan form tambah barang
 
 	public function tambah(){
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view("content/pendeta/v_add_pendeta");
+		$dataPendeta = $this->ModelPendeta->getAll();
+		$data = array(
+			"pendetas" => $dataPendeta
+		);
+		$data['title'] = 'tambah Data Pendeta';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view("content/pendeta/v_add_pendeta", $data);
 		$this->load->view('templates/footer');
 	}
 	
@@ -93,12 +104,16 @@ class Pendeta extends CI_Controller
 
 	public function ubah($id)
 	{
+		$data['title'] = 'Ubah Data pendeta';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$pendeta = $this->ModelPendeta->getByPrimaryKey($id);
 		$data = array(
 			"pendeta" => $pendeta,
 		);
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
 		$this->load->view('content/pendeta/v_update_pendeta', $data);
 		$this->load->view('templates/footer');
 	}

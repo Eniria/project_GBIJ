@@ -67,14 +67,6 @@
 							<input required type="text" value="<?= $jemaat->alamat ?>" class="form-control" name="alamat">
 						</div>
 						<div class="form-group">
-							<label class="form-label">Nama Bapak</label>
-							<input required type="text" value="<?= $jemaat->nama_bapak ?>" class="form-control" name="nama_bapak">
-						</div>
-						<div class="form-group">
-							<label class="form-label">Nama Ibu</label>
-							<input required type="text" value="<?= $jemaat->nama_ibu ?>" class="form-control" name="nama_ibu">
-						</div>
-						<div class="form-group">
 							<label class="form-label">Pekerjaan</label>
 							<input required type="text" value="<?= $jemaat->pekerjaan ?>" class="form-control" name="pekerjaan">
 						</div>

@@ -5,6 +5,9 @@ class Jemaat extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->userdata('email')){
+			redirect('auth');
+		}			
 		$this->load->model("ModelJemaat");
 	}
 
@@ -28,10 +31,17 @@ class Jemaat extends CI_Controller
 	//untuk me-load tampilan form tambah barang
 	public function tambah()
 	{
+		$dataJemaat = $this->ModelJemaat->getAll();
+		$data = array(
+			"jemats" => $dataJemaat
+		);
+		$data['title'] = 'Tambah Data Jemaat';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view("content/jemaat/v_add_jemaat");
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view("content/jemaat/v_add_jemaat", $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -61,8 +71,6 @@ class Jemaat extends CI_Controller
 			$tanggal_dibaptis = $this->input->post('tanggal_dibaptis', TRUE);
 			$tanggal_kematian = $this->input->post('tanggal_kematian', TRUE);
 			$alamat = $this->input->post('alamat', TRUE);
-			$nama_bapak = $this->input->post('nama_bapak', TRUE);
-			$nama_ibu = $this->input->post('nama_ibu', TRUE);
 			$pekerjaan = $this->input->post('pekerjaan', TRUE);
 			$status_perkawinan = $this->input->post('status_perkawinan', TRUE);
 
@@ -76,8 +84,6 @@ class Jemaat extends CI_Controller
 				'tanggal_dibaptis' => $tanggal_dibaptis,
 				'tanggal_kematian' => $tanggal_kematian,
 				'alamat' => $alamat,
-				'nama_bapak' => $nama_bapak,
-				'nama_ibu' => $nama_ibu,
 				'pekerjaan' => $pekerjaan,
 				'status_perkawinan' => $status_perkawinan,
 				'foto' => $foto
@@ -99,16 +105,17 @@ class Jemaat extends CI_Controller
 
 	public function ubah($id)
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$jemaat = $this->ModelJemaat->getByPrimaryKey($id);
-		$data = array(
-			"jemaat" => $jemaat,
-		);
 		$data['title'] = 'Ubah Data Jemaat';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$jemaat = $this->ModelJemaat->getByPrimaryKey($id);
+		$data = array(
+			"jemaat" => $jemaat,
+		);
+		
 		$this->load->view('content/jemaat/v_update_jemaat', $data);
 		$this->load->view('templates/footer');
 	}
@@ -139,8 +146,6 @@ class Jemaat extends CI_Controller
 			$tanggal_dibaptis = $this->input->post('tanggal_dibaptis', TRUE);
 			$tanggal_kematian = $this->input->post('tanggal_kematian', TRUE);
 			$alamat = $this->input->post('alamat', TRUE);
-			$nama_bapak = $this->input->post('nama_bapak', TRUE);
-			$nama_ibu = $this->input->post('nama_ibu', TRUE);
 			$pekerjaan = $this->input->post('pekerjaan', TRUE);
 			$status_perkawinan = $this->input->post('status_perkawinan', TRUE);
 			$id = $this->input->post('id_jemaat');
@@ -154,8 +159,6 @@ class Jemaat extends CI_Controller
 				'tanggal_dibaptis' => $tanggal_dibaptis,
 				'tanggal_kematian' => $tanggal_kematian,
 				'alamat' => $alamat,
-				'nama_bapak' => $nama_bapak,
-				'nama_ibu' => $nama_ibu,
 				'pekerjaan' => $pekerjaan,
 				'status_perkawinan' => $status_perkawinan,
 				'foto' => $foto

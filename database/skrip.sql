@@ -4,7 +4,6 @@ use logingbij;
 
 			CREATE TABLE jemaat(
 								id_jemaat int not null primary key auto_increment,
-								no_kk varchar(40) not null,
 								nik_jemaat varchar(40) not null,
 								nama_jemaat varchar(200) not null,
 								jk_jemaat enum('L','P'),
@@ -13,8 +12,6 @@ use logingbij;
 								tanggal_dibaptis date,
 								tanggal_kematian VARCHAR (20),
 								alamat varchar(200) not null,
-								nama_bapak varchar(200) not null,
-								nama_ibu varchar(200) not null,
 								pekerjaan varchar(200) not null,
 								status_perkawinan enum('Kawin', 'Singgle', 'Janda', 'Duda'),
 								foto VARCHAR(65)
@@ -69,27 +66,12 @@ create table pengurusGereja (
 						  alamat varchar(200) not null,
 						  status_pernikahan enum('Menikah','Sudah Nikah', 'Janda', 'Duda'),
 						  foto varchar(200));
--- create table mati (
---     id_mati int not null primary key auto_increment,
---     no_surat_mati varchar(20) not null,
---     nik_mati varchar(20) not null,
---     nama_mati varchar(200) not null,
---     jk_mati enum('Laki-laki','Perempuan'),
---     alamat_mati varchar(200) not null,
---     tempat_lahir varchar(200) not null,
---     tanggal_lahir date,
---     tempat_mati varchar(200) not null,
---     tanggal_mati date,
---     alasan_mati text,
---     foto varchar(200)
--- );
 
 create table cerai (
     id_cerai int not null primary key auto_increment,
     no_surat_cerai varchar(20) not null,
     nama_pria varchar(200) not null,
     nama_wanita varchar(200) not null,
-    tempat_cerai varchar(200) not null,
     tanggal_cerai date,
     alasan_cerai text,
     foto varchar(200)

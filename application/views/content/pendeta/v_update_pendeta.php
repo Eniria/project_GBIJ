@@ -97,7 +97,7 @@
 
 		</div>
 		<div class="card-footer">
-			<button type="button" id="btn-update-pendeta" class="btn btn-success btn-sm">
+			<button type="submit" id="btn-update-pendeta" class="btn btn-success btn-sm">
 				<i class="fa fa-save"></i> Simpan
 			</button>
 			<a href="<?= site_url('pendeta') ?>" class="btn btn-primary btn-sm">

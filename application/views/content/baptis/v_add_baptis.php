@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Ubah Data Perceraian</title>
+	<title>Form Tambah Baptis</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -19,49 +19,53 @@
 <body>
 	<div style="width: 1200px ;" class="card">
 		<div class="card-header">
-			<h3>Ubah Data Perceraian</h3>
+			<h3>Tambah Data Baptis</h3>
 		</div>
 		<div class="card-body">
-			<form id="form-update-cerai" method="post" action="<?= site_url('cerai/update') ?>" enctype="multipart/form-data">
+			<form id="form-tambah-baptis" method="post" action="<?= site_url('baptis/insert') ?>" enctype="multipart/form-data">
 				<div class="form-group">
-					<label class="form_label">Nomor Surat Perceraian </label>
-					<input require type="text" value="<?= $cerai->no_surat_cerai ?>" class="form-control" name="no_surat_cerai">
-
+					<label class="form-label">Nomor Surat Baptis</label>
+					<input required type="text" class="form-control" name="no_surat_baptis">
 				</div>
 				<div class="form-group">
-					<label class="form_label">Nama Pria </label>
-					<input require type="text" value="<?= $cerai->nama_pria ?>" class="form-control" name="nama_pria">
-
+					<label class="form-label">Nama Baptis</label>
+					<br>
+					<select name="id_jemaat" id="" class="form-control">
+						<option value="" disabled selected>Pilih Data</option>
+						<?php
+						foreach ($jemaat as $j) {
+							echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+						}
+						?>
+					</select>
 				</div>
-
 				<div class="form-group">
-					<label class="form_label">Nama Wanita</label>
-					<input require type="text" value="<?= $cerai->nama_wanita ?>" class="form-control" name="nama_wanita">
-
+					<label class="form-label">Nama Pendeta</label>
+					<input required type="text" class="form-control" name="nama_pendeta">
 				</div>
-
 				<div class="form-group">
-					<label class="form_label">Tgl Perceraian </label>
-					<input require type="date" value="<?= $cerai->tanggal_cerai ?>" class="form-control" name="tanggal_cerai">
+					<label class="form-label">Jenis Kelamin</label>
+					<select required class="form-control" name="jenis_kelamin">
+						<option value="Laki-laki">Laki-laki</option>
+						<option value="Perempuan">Perempuan</option>
+					</select>
 				</div>
-
 				<div class="form-group">
-					<label class="form_label">alasan_cerai</label>
-					<input require type="text" value="<?= $cerai->alasan_cerai ?>" class="form-control" name="alasan_cerai">
+					<label class="form-label">Tempat Baptis</label>
+					<input required type="text" class="form-control" name="tempat_baptis">
 				</div>
-
 				<div class="form-group">
-					<label class="form_label">Foto/File </label>
-					<input require type="file" class="form-control" name="userfile" size="20" required="">
+					<label class="form-label">Tanggal Baptis</label>
+					<input required type="date" class="form-control" name="tanggal_baptis">
 				</div>
 
-				<input type="hidden" name="id_cerai" value="<?= $cerai->id_cerai ?>">
 		</div>
+
 		<div class="card-footer">
-			<button type="submit" id="btn-update-cerai" class="btn btn-success btn-sm">
-				<i class="fa fa-save"></i> Simpan
+			<button type="submit" id="btn-save-baptis" class="btn btn-success btn-sm">
+				<i class="fa fa-save"></i>Simpan
 			</button>
-			<a href="<?= site_url('cerai') ?>" class="btn btn-primary btn-sm">
+			<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
 				<i class="fa fa-reply"></i>Kembali
 			</a>
 		</div>
@@ -72,13 +76,13 @@
 </html>
 <script>
 	$(function() {
-		$("#btn-update-cerai").on("click", function() {
-			let validate = $("#form-update-cerai").valid()
+		$("#btn-save-baptis").on("click", function() {
+			let validate = $("#form-tambah-baptis").valid()
 			if (validate) {
-				$("#form-update-cerai").submit()
+				$("#form-tambah-baptis").submit()
 			}
 		})
-		$("#form-update-barang").validates({
+		$("#form-tambah-baptis").validates({
 			rules: {
 				harga_barang: {
 					digits: true

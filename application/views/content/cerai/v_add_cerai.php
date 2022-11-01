@@ -36,10 +36,6 @@
 					<input required type="text" class="form-control" name="nama_wanita">
 				</div>
 				<div class="form-group">
-					<label class="form-label">Tempat Perceraian</label>
-					<input required type="text" class="form-control" name="tempat_cerai">
-				</div>
-				<div class="form-group">
 					<label class="form-label">Tanggal Perceraian</label>
 					<input required type="date" class="form-control" name="tanggal_cerai">
 				</div>
@@ -47,7 +43,7 @@
 				<input required type="text" class="form-control" name="alasan_cerai">
 				<div class="form-group">
 					<label class="form-label">Foto/File</label>
-					<input require type="file" class="form-control" name="userfile" size="20" required="">
+					<input require type="file" class="form-control" name="userfile" size="30" required="">
 				</div>
 		</div>
 	

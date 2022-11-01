@@ -5,6 +5,9 @@ class Nikah extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->userdata('email')){
+			redirect('auth');
+		}
 		$this->load->model("ModelNikah");
 	}
 
@@ -25,9 +28,16 @@ class Nikah extends CI_Controller
 	//untuk me-load tampilan form tambah nikah
 	public function tambah()
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view("content/nikah/v_add_nikah");
+		$dataNikah = $this->ModelNikah->getAll();
+		$data = array(
+			"nikahs" => $dataNikah
+		);
+		$data['title'] = 'Tambah Data Nikah';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view("content/nikah/v_add_nikah", $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -54,8 +64,12 @@ class Nikah extends CI_Controller
 
 	public function ubah($id)
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
+		$data['title'] = 'Ubah Data Nikah';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$nikah = $this->ModelNikah->getByPrimaryKey($id);
 		$data = array(
 			"nikah" => $nikah,
