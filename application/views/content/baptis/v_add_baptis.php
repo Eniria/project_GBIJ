@@ -17,60 +17,60 @@
 </head>
 
 <body>
-	<div style="width: 1200px ;" class="card">
-		<div class="card-header">
-			<h3>Tambah Data Baptis</h3>
-		</div>
-		<div class="card-body">
-			<form id="form-tambah-baptis" method="post" action="<?= site_url('baptis/insert') ?>" enctype="multipart/form-data">
-				<div class="form-group">
-					<label class="form-label">Nomor Surat Baptis</label>
-					<input required type="text" class="form-control" name="no_surat_baptis">
-				</div>
-				<div class="form-group">
-					<label class="form-label">Nama Baptis</label>
-					<br>
-					<select name="id_jemaat" id="" class="form-control">
-						<option value="" disabled selected>Pilih Data</option>
-						<?php
-						foreach ($jemaat as $j) {
-							echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
-						}
-						?>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="form-label">Nama Pendeta</label>
-					<input required type="text" class="form-control" name="nama_pendeta">
-				</div>
-				<div class="form-group">
-					<label class="form-label">Jenis Kelamin</label>
-					<select required class="form-control" name="jenis_kelamin">
-						<option value="Laki-laki">Laki-laki</option>
-						<option value="Perempuan">Perempuan</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="form-label">Tempat Baptis</label>
-					<input required type="text" class="form-control" name="tempat_baptis">
-				</div>
-				<div class="form-group">
-					<label class="form-label">Tanggal Baptis</label>
-					<input required type="date" class="form-control" name="tanggal_baptis">
-				</div>
-
-		</div>
-
-		<div class="card-footer">
-			<button type="submit" id="btn-save-baptis" class="btn btn-success btn-sm">
-				<i class="fa fa-save"></i>Simpan
-			</button>
-			<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
-				<i class="fa fa-reply"></i>Kembali
-			</a>
-		</div>
-		</form>
+<div style="width: 1200px ;" class="card">
+	<div class="card-header">
+		<h3>Tambah Data Baptis</h3>
 	</div>
+	<div class="card-body">
+		<form id="form-tambah-baptis" method="post" action="<?= site_url('baptis/insert') ?>" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="form-label">Nomor Surat Baptis</label>
+				<input required type="text" class="form-control" name="no_surat_baptis">
+			</div>
+			<div class="form-group">
+				<label class="form-label">Nama Baptis</label>
+				<br>
+				<select name="id_jemaat" id="" class="form-control">
+					<option value="" disabled selected>Pilih Data</option>
+					<?php
+					foreach ($jemaat as $j) {
+						echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+					}
+					?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Nama Pendeta</label>
+				<input required type="text" class="form-control" name="nama_pendeta">
+			</div>
+			<div class="form-group">
+				<label class="form-label">Jenis Kelamin</label>
+				<select required class="form-control" name="jenis_kelamin">
+					<option value="Laki-laki">Laki-laki</option>
+					<option value="Perempuan">Perempuan</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Tempat Baptis</label>
+				<input required type="text" class="form-control" name="tempat_baptis">
+			</div>
+			<div class="form-group">
+				<label class="form-label">Tanggal Baptis</label>
+				<input required type="date" class="form-control" name="tanggal_baptis">
+			</div>
+
+	</div>
+
+	<div class="card-footer">
+		<button type="submit" id="btn-save-baptis" class="btn btn-success btn-sm">
+			<i class="fa fa-save"></i>Simpan
+		</button>
+		<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
+			<i class="fa fa-reply"></i>Kembali
+		</a>
+	</div>
+	</form>
+</div>
 </body>
 
 </html>

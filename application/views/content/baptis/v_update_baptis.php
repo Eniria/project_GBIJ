@@ -17,62 +17,56 @@
 </head>
 
 <body>
-	<div style="width: 1200px ;" class="card">
-		<div class="card-header">
-			<h3>Ubah Data Baptis</h3>
-		</div>
-		<div class="card-body">
-			<form id="form-update-baptis" method="post" action="<?= site_url('baptis/update') ?>" enctype="multipart/form-data">
-				<div class="form-group">
-					<label class="form_label">No Surat Baptis </label>
-					<input require type="text" value="<?= $baptis->no_surat_baptis ?>" class="form-control" name="no_surat_baptis">
-
-				</div>
-
-				<div class="form-group">
-					<label class="form_label">Nama Baptis </label>
-					<input require type="text" value="<?= $baptis->nama_baptis ?>" class="form-control" name="nama_baptis">
-
-				</div>
-
-				<div class="form-group">
-					<label class="form_label">Jenis Kelamin </label>
-					<select required class="form-control" name="jenis_kelamin">
-						<option value="Laki-laki">Laki-laki</option>
-						<option value="Perempuan">Perempuan</option>
-					</select>
-
-				</div>
-
-				<div class="form-group">
-					<label class="form_label">Nama Pendeta </label>
-					<input require type="text" value="<?= $baptis->nama_pendeta ?>" class="form-control" name="nama_pendeta">
-
-				</div>
-
-				<div class="form-group">
-					<label class="form_label">Tempat Baptis </label>
-					<input require type="text" value="<?= $baptis->tempat_baptis ?>" class="form-control" name="tempat_baptis">
-				</div>
-
-				<div class="form-group">
-					<label class="form_label">Tanggal Baptis </label>
-					<input require type="date" value="<?= $baptis->tanggal_baptis ?>" class="form-control" name="tanggal_baptis">
-				</div>
-
-				<input type="hidden" name="id_baptis" value="<?= $baptis->id_baptis ?>">
-
-		</div>
-		<div class="card-footer">
-			<button type="button" id="btn-update-baptis" class="btn btn-success btn-sm">
-				<i class="fa fa-save"></i> Simpan
-			</button>
-			<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
-				<i class="fa fa-reply"></i>Kembali
-			</a>
-			</form>
-		</div>
+<div style="width: 1200px ;" class="card">
+	<div class="card-header">
+		<h3>Ubah Data Baptis</h3>
 	</div>
+	<div class="card-body">
+		<form id="form-update-baptis" method="post" action="<?= site_url('baptis/update') ?>" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="form_label">No Surat Baptis </label>
+				<input require type="text" value="<?= $baptis->no_surat_baptis ?>" class="form-control" name="no_surat_baptis">
+
+			</div>
+
+			<div class="form-group">
+				<label class="form_label">Jenis Kelamin </label>
+				<select required class="form-control" name="jenis_kelamin">
+					<option value="Laki-laki">Laki-laki</option>
+					<option value="Perempuan">Perempuan</option>
+				</select>
+
+			</div>
+
+			<div class="form-group">
+				<label class="form_label">Nama Pendeta </label>
+				<input require type="text" value="<?= $baptis->nama_pendeta ?>" class="form-control" name="nama_pendeta">
+
+			</div>
+
+			<div class="form-group">
+				<label class="form_label">Tempat Baptis </label>
+				<input require type="text" value="<?= $baptis->tempat_baptis ?>" class="form-control" name="tempat_baptis">
+			</div>
+
+			<div class="form-group">
+				<label class="form_label">Tanggal Baptis </label>
+				<input require type="date" value="<?= $baptis->tanggal_baptis ?>" class="form-control" name="tanggal_baptis">
+			</div>
+
+			<input type="hidden" name="id_baptis" value="<?= $baptis->id_baptis ?>">
+
+	</div>
+	<div class="card-footer">
+		<button type="submit" id="btn-update-baptis" class="btn btn-success btn-sm">
+			<i class="fa fa-save"></i> Simpan
+		</button>
+		<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
+			<i class="fa fa-reply"></i>Kembali
+		</a>
+		</form>
+	</div>
+</div>
 </body>
 
 </html>

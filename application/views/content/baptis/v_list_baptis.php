@@ -32,73 +32,92 @@
 </head>
 
 <body>
-	<div style="width: 2000px ;" class="card">
-		<div class="card-header ">
-			<h3 class="card-title">Data Baptis</h3>
+<div id="content">
+	<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #1C623C;">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggleTop">
+					<i class="fa fa-bars"></i>
+				</a>
+			</li>
+		</ul>
+		<div>
+			<h3 style="color: #FFFFFF;">Data Baptis</h3>
 		</div>
-		<div class="card-body">
-			<a href="<?= site_url('baptis/tambah') ?>" class="btn btn-primary btn-sm mb-3">
-				<i class="fa fa-plus"></i>Tambah Baptis
-			</a>
-			<table class="table table-bordered table-hover table-sm ">
+	</nav>
+	<div class="card-body">
+		<a href="<?= site_url('baptis/tambah') ?>" class="btn btn-primary">
+			<i class="fa fa-plus"></i>Tambah Data
+		</a>
+		<a href="<?= site_url('baptis/print') ?>" class="btn btn-danger">
+			<i class="fa fa-print"></i>Print Data
+		</a>
+		<a href="<?= site_url('baptis/pdf') ?>" class="btn btn-warning">
+			<i class="fa fa-file"></i> Export PDF
+		</a>
+		<div class="table-responsive text-nowrap">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>Nomor</th>
-						<th>No Surat Baptis </th>
-						<th>Nama Baptis </th>
-						<th>Jenis Kelamin </th>
-						<th>Nama Pendeta</th>
-						<th>Tempat Baptis</th>
-						<th>Tanggal Baptis</th>
-						<th>Action</th>
+						<th>NO SURAT BAPTIS</th>
+						<th>NAMA BAPTIS</th>
+						<th>JK</th>
+						<th>NAMA PENDETA</th>
+						<th>TEMPAT BAPTIS</th>
+						<th>TANGGAL BAPTIS</th>
+						<th>ACTION</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php
-					$no = 1;
-					foreach ($baptiss as $b) {
-					?>
-						<tr>
-							<td><?= $no++ ?></td>
-							<td><?= $b->no_surat_baptis  ?></td>
-							<td><?= $b->nama_baptis  ?></td>
-							<td><?= $b->jenis_kelamin  ?></td>
-							<td><?= $b->nama_pendeta  ?></td>
-							<td><?= $b->tempat_baptis ?></td>
-							<td><?= $b->tanggal_baptis  ?></td>
-							<td>
-								<a href="<?= site_url("baptis/ubah/$b->id_baptis") ?>" class="btn btn-warning btn-sm">
-									<i class="fa fa-pencil"></i>
-								</a>
-								<a href="#" data-id="<?= $b->id_baptis ?>" class="btn btn-danger btn-sm btn-delete-baptis">
-									<i class="fa fa-trash"></i>
-								</a>
-							</td>
-						</tr>
+				<?php
+				$no = 1;
+				foreach ($baptiss as $b) {
+				?>
+					<tr>
+						<td><?= $no++ ?></td>
+						<td><?= $b->no_surat_baptis  ?></td>
+						<td>
+							<?= $b->nama_jemaat  ?>
+						</td>
+						<td><?= $b->jenis_kelamin  ?></td>
+						<td><?= $b->nama_pendeta  ?></td>
+						<td><?= $b->tempat_baptis ?></td>
+						<td><?= $b->tanggal_baptis  ?></td>
+						<td>
+						<a href="<?= site_url("baptis/ubah/$b->id_baptis") ?>" class="btn btn-warning btn-sm">
+							<i class="fa fa-pencil"></i>
+						</a>
+						<a href="#" data-id="<?= $b->id_baptis ?>" class="btn btn-danger btn-sm btn-delete-baptis">
+							<i class="fa fa-trash"></i>
+						</a>
+						</td>
+					</tr>
 					<?php
 					}
 					?>
-
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div class="modal" id="modal-confirm-delete">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<h4>Anda Yakin Hapus data ini?</h4>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
-					<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
-				</div>
+</div>
+<div class="modal" id="modal-confirm-delete">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h4>Anda Yakin Hapus data ini?</h4>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
+				<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
 			</div>
 		</div>
 	</div>
-	<form id="form-delete" method="post" action="<?= site_url('baptis/delete') ?>">
-
-	</form>
+</div>
+<form id="form-delete" method="post" action="<?= site_url('baptis/delete') ?>">
+</form>
+	</div>
+</div>
 </body>
 
 </html>
