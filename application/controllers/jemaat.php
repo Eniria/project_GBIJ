@@ -72,6 +72,7 @@ class Jemaat extends CI_Controller
 			$tanggal_kematian = $this->input->post('tanggal_kematian', TRUE);
 			$alamat = $this->input->post('alamat', TRUE);
 			$pekerjaan = $this->input->post('pekerjaan', TRUE);
+			$status_aktif = $this->input->post('status_aktif', TRUE);
 			$status_perkawinan = $this->input->post('status_perkawinan', TRUE);
 
 			$data = array(
@@ -85,6 +86,7 @@ class Jemaat extends CI_Controller
 				'tanggal_kematian' => $tanggal_kematian,
 				'alamat' => $alamat,
 				'pekerjaan' => $pekerjaan,
+				'status_aktif' => $status_aktif,
 				'status_perkawinan' => $status_perkawinan,
 				'foto' => $foto
 			);
@@ -147,6 +149,7 @@ class Jemaat extends CI_Controller
 			$tanggal_kematian = $this->input->post('tanggal_kematian', TRUE);
 			$alamat = $this->input->post('alamat', TRUE);
 			$pekerjaan = $this->input->post('pekerjaan', TRUE);
+			$status_aktif = $this->input->post('status_aktif', TRUE);
 			$status_perkawinan = $this->input->post('status_perkawinan', TRUE);
 			$id = $this->input->post('id_jemaat');
 			$data = array(
@@ -160,6 +163,7 @@ class Jemaat extends CI_Controller
 				'tanggal_kematian' => $tanggal_kematian,
 				'alamat' => $alamat,
 				'pekerjaan' => $pekerjaan,
+				'status_aktif' => $status_aktif,
 				'status_perkawinan' => $status_perkawinan,
 				'foto' => $foto
 			);

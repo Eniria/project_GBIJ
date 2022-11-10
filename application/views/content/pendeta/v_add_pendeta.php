@@ -34,8 +34,9 @@
 							<input require type="text" class="form-control" name="nik" required="">
 						</div>
 						<div class="form-group">
-							<label class="form-label">Nama</label>
+							<label class="form-label">Nama Pendeta</label>
 							<input require type="text" class="form-control" name="nama" required="">
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="form-label">Jenis Kelamin</label>
@@ -76,7 +77,7 @@
 						</div>
 						<div class="form-group">
 							<label class="form-label">Foto</label>
-							<input require type="file" class="form-control" name="userfile" size="20" required="">
+							<input require type="file" class="form-control" name="userfile" size="20" required="" placeholder="hanya boleh upload gambar">
 						</div>
 					</div>
 				</div>

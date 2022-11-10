@@ -29,21 +29,6 @@
 
 			</div>
 
-			<div class="form-group">
-				<label class="form_label">Nama Pria </label>
-				<input require type="text" value="<?= $nikah->nama_pria?>" class="form-control" name="nama_pria">
-
-			</div>
-
-			<div class="form-group">
-				<label class="form_label">Nama Wanita </label>
-				<input require type="text" value="<?= $nikah->nama_wanita?>" class="form-control" name="nama_wanita">
-			</div>
-
-			<div class="form-group">
-				<label class="form_label">Nama Pendeta </label>
-				<input require type="text" value="<?= $nikah->nama_pendeta?>" class="form-control" name="nama_pendeta">
-			</div>
 
 			<div class="form-group">
 				<label class="form_label">Saksi Nikah </label>

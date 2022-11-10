@@ -29,11 +29,31 @@
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Pria</label>
-					<input required type="text" class="form-control" name="nama_pria">
+					<br>
+					<select name="id_jemaat_pria" id="" class="form-control">
+						<option value="" disabled selected>Pilih Data</option>
+						<?php
+						foreach ($jemaat as $j) {
+							if ($j->jk_jemaat == 'L') {
+								echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+							}
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Wanita</label>
-					<input required type="text" class="form-control" name="nama_wanita">
+					<br>
+					<select name="id_jemaat_wanita" id="" class="form-control">
+						<option value="" disabled selected>--pilih data--</option>
+						<?php
+						foreach ($jemaat as $j) {
+							if ($j->jk_jemaat == 'P') {
+								echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+							}
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Tanggal Perceraian</label>
@@ -46,16 +66,16 @@
 					<input require type="file" class="form-control" name="userfile" size="30" required="">
 				</div>
 		</div>
-	
-	<div class="card-footer">
-		<button type="submit" id="btn-save-cerai" class="btn btn-success btn-sm">
-			<i class="fa fa-save"></i>Simpan
-		</button>
-		<a href="<?= site_url('cerai') ?>" class="btn btn-primary btn-sm">
-			<i class="fa fa-reply"></i>Kembali
-		</a>
-	</div>
-	</form>
+
+		<div class="card-footer">
+			<button type="submit" id="btn-save-cerai" class="btn btn-success btn-sm">
+				<i class="fa fa-save"></i>Simpan
+			</button>
+			<a href="<?= site_url('cerai') ?>" class="btn btn-primary btn-sm">
+				<i class="fa fa-reply"></i>Kembali
+			</a>
+		</div>
+		</form>
 	</div>
 </body>
 

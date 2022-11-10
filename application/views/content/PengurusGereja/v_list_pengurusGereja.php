@@ -32,7 +32,7 @@
 </head>
 
 <body>
-<div id="content"  style="width: 1500px;">
+	<div id="content" style="width: 1500px;">
 		<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -52,7 +52,7 @@
 			<a href="<?= site_url('PengurusGereja/print') ?>" class="btn btn-danger">
 				<i class="fa fa-print"></i>Print
 			</a>
-			<div class="card-body">
+			<div class="table-responsive text-nowrap">
 				<table class="table table-bordered table-hover table-sm">
 					<thead>
 						<tr style="background-color: #6B6D01;">
@@ -79,7 +79,7 @@
 
 								<td><?= $no++ ?></td>
 								<td><?= $PG->nik  ?></td>
-								<td><?= $PG->nama  ?></td>
+								<td><?= $PG->nama_jemaat  ?></td>
 								<td><?= $PG->jenis_kelamin ?></td>
 								<td><?= $PG->tempat_lahir ?></td>
 								<td><?= $PG->tanggal_lahir  ?></td>

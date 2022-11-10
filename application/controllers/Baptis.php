@@ -5,28 +5,50 @@ class Baptis extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("ModelBaptis");
+		if (!$this->session->userdata('email')) {
+			redirect('auth');
+		}
+		$this->load->model('ModelBaptis');
 		$this->load->model('ModelJemaat');
+		$this->load->model('ModelPendeta');
 	}
 
 	public function index()
 	{
-		$dataBaptis = $this->ModelBaptis->getAll('jemaat');
+		$dataBaptis = $this->ModelBaptis->getAll('join');
+		// $dataBaptis = $this->ModelBaptis->getAll('pendeta');
+
 		$data = array(
 			"baptiss" => $dataBaptis
 		);
+		$data['title'] = 'Data Baptis';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('content/baptis/v_list_baptis', $data);
 		$this->load->view('templates/footer');
 	}
 	//untuk me-load tampilan form tambah baptis
-	public function tambah(){
+	public function tambah()
+	{
 		$data['jemaat'] = $this->ModelJemaat->getAll();
-		$this->load->view('templates/header',$data);
+		$data['pendeta'] = $this->ModelPendeta->getAll();
+
+		$data['title'] = 'Tambah Data Baptis';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/baptis/v_add_baptis");
 		$this->load->view('templates/footer');
+	}
+
+	public function print()
+	{
+		$dataBaptis['baptis'] = $this->ModelBaptis->getAll('join');
+		$this->load->view('content/baptis/print_baptis', $dataBaptis);
 	}
 
 	public function insert()
@@ -35,7 +57,7 @@ class Baptis extends CI_Controller
 		$data = array(
 			"no_surat_baptis" => $this->input->post("no_surat_baptis"),
 			"id_jemaat" => $this->input->post("id_jemaat"),
-			"nama_pendeta" => $this->input->post("nama_pendeta"),
+			"id_pendeta" => $this->input->post("id_pendeta"),
 			"jenis_kelamin" => $this->input->post("jenis_kelamin"),
 			"tempat_baptis" => $this->input->post("tempat_baptis"),
 			"tanggal_baptis" => $this->input->post("tanggal_baptis"),
@@ -46,7 +68,10 @@ class Baptis extends CI_Controller
 
 	public function ubah($id)
 	{
-		$this->load->view('templates/header');
+		$data['title'] = 'Ubah Data Baptis';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 
 		$baptis = $this->ModelBaptis->getByPrimaryKey($id);
@@ -62,14 +87,14 @@ class Baptis extends CI_Controller
 		$id = $this->input->post('id_baptis');
 		$data = array(
 			"no_surat_baptis" => $this->input->post("no_surat_baptis"),
-			"nama_pendeta" => $this->input->post("nama_pendeta"),
+			// "nama_pendeta" => $this->input->post("nama_pendeta"),
 			"jenis_kelamin" => $this->input->post("jenis_kelamin"),
 			"tempat_baptis" => $this->input->post("tempat_baptis"),
 			"tanggal_baptis" => $this->input->post("tanggal_baptis"),
 		);
 		echo var_dump($data);
 		echo var_dump($id);
-		$this->ModelBaptis->update($id,$data);
+		$this->ModelBaptis->update($id, $data);
 		redirect('baptis');
 	}
 
@@ -80,4 +105,3 @@ class Baptis extends CI_Controller
 		redirect('baptis');
 	}
 }
-

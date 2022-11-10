@@ -14,6 +14,7 @@
                     <p class="card-text"><?= $user['email']; ?></p>
                     <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
                 </div>
+
             </div>
         </div>
     </div>

@@ -26,10 +26,6 @@
 				<!--- ini untuk membagi layar --->
 				<div class="row">
 					<div class="col-6">
-						<!-- <div class="form-group">
-							<label class="form-label">Nomor KK</label>
-							<input required type="text" class="form-control" name="no_kk">
-						</div> -->
 						<div class="form-group">
 							<label class="form-label">NIK Jemaat</label>
 							<input required type="text" class="form-control" name="nik_jemaat">
@@ -70,6 +66,16 @@
 						<div class="form-group">
 							<label class="form-label">Pekerjaan</label>
 							<input required type="text" class="form-control" name="pekerjaan">
+						</div>
+						<div class="form-group">
+							<label class="form-label">Status Aktif</label>
+							<select required class="form-control" name="status_aktif">
+								<option value="nikah">Nikah</option>
+								<option value="pindah">Pindah</option>
+								<option value="mati">meninggal</option>
+								<option value="berhenti">Berhenti</option>
+								<option value="merantau">Merantau</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="form-label">Status Perkawinan</label>

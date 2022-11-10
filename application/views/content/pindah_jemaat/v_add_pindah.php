@@ -23,8 +23,16 @@
 		<div class="card-body">
 			<form id="form-tambah" method="post" action="<?= site_url('Pindahjemaat/insert') ?>" enctype="multipart/form-data">
 				<div class="form-group">
-					<label class="form-label">Nama Jemaat</label>
-					<input require type="text" class="form-control" name="Nama_Jemaat">
+					<label class="form-label">Nama</label>
+					<br>
+					<select name="id_jemaat" id="" class="form-control">
+						<option value="" disabled selected>Pilih Nama</option>
+						<?php
+						foreach ($jemaat as $j) {
+							echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Gereja_Asal</label>

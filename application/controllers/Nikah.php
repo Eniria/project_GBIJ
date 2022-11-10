@@ -5,21 +5,25 @@ class Nikah extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		if(!$this->session->userdata('email')){
+		if (!$this->session->userdata('email')) {
 			redirect('auth');
 		}
-		$this->load->model("ModelNikah");
+		$this->load->model('ModelNikah');
+		$this->load->model('ModelPendeta');
+		$this->load->model('ModelJemaat');
 	}
 
 	public function index()
 	{
-		$dataNikah = $this->ModelNikah->getAll();
+		$dataNikah = $this->ModelNikah->getAll('join');
+
 		$data = array(
 			"nikahs" => $dataNikah
 		);
 		$data['title'] = 'Data Nikah';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('content/nikah/v_list_nikah', $data);
@@ -28,10 +32,9 @@ class Nikah extends CI_Controller
 	//untuk me-load tampilan form tambah nikah
 	public function tambah()
 	{
-		$dataNikah = $this->ModelNikah->getAll();
-		$data = array(
-			"nikahs" => $dataNikah
-		);
+		$data['jemaat'] = $this->ModelJemaat->getAll();
+		$data['pendeta'] = $this->ModelPendeta->getAll();
+
 		$data['title'] = 'Tambah Data Nikah';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -45,9 +48,9 @@ class Nikah extends CI_Controller
 	{
 		$data = array(
 			"no_nikah" => $this->input->post("no_nikah"),
-			"nama_pria" => $this->input->post("nama_pria"),
-			"nama_wanita" => $this->input->post("nama_wanita"),
-			"nama_pendeta" => $this->input->post("nama_pendeta"),
+			"id_pendeta" => $this->input->post("id_pendeta"),
+			"id_jemaat_pria" => $this->input->post("id_jemaat_pria"),
+			"id_jemaat_wanita" => $this->input->post("id_jemaat_wanita"),
 			"saksi_nikah" => $this->input->post("saksi_nikah"),
 			"tempat_nikah" => $this->input->post("tempat_nikah"),
 			"tanggal_nikah" => $this->input->post("tanggal_nikah"),
@@ -58,7 +61,7 @@ class Nikah extends CI_Controller
 
 	public function print()
 	{
-		$dataNikah['nikah'] = $this->ModelNikah->getAll();
+		$dataNikah['nikah'] = $this->ModelNikah->getAll('join');
 		$this->load->view('content/nikah/print_nikah', $dataNikah);
 	}
 
@@ -82,9 +85,6 @@ class Nikah extends CI_Controller
 		$id = $this->input->post('id_nikah');
 		$data = array(
 			"no_nikah" => $this->input->post("no_nikah"),
-			"nama_pria" => $this->input->post("nama_pria"),
-			"nama_wanita" => $this->input->post("nama_wanita"),
-			"nama_pendeta" => $this->input->post("nama_pendeta"),
 			"saksi_nikah" => $this->input->post("saksi_nikah"),
 			"tempat_nikah" => $this->input->post("tempat_nikah"),
 			"tanggal_nikah" => $this->input->post("tanggal_nikah"),

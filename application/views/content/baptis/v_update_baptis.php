@@ -38,11 +38,10 @@
 
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label class="form_label">Nama Pendeta </label>
 				<input require type="text" value="<?= $baptis->nama_pendeta ?>" class="form-control" name="nama_pendeta">
-
-			</div>
+			</div> -->
 
 			<div class="form-group">
 				<label class="form_label">Tempat Baptis </label>

@@ -8,12 +8,13 @@ class Pindahjemaat extends CI_Controller
 		if(!$this->session->userdata('email')){
 			redirect('auth');
 		}
-		$this->load->model("ModelPindahJemaat");
+		$this->load->model('ModelPindahJemaat');
+		$this->load->model('ModelJemaat');
 	}
 
 	public function index()
 	{
-		$dataPindah_Jemaat = $this->ModelPindahJemaat->getAll();
+		$dataPindah_Jemaat = $this->ModelPindahJemaat->getAll('jemaat');
 		$data = array(
 			"Pindah_Jemaat" => $dataPindah_Jemaat
 		);
@@ -29,10 +30,8 @@ class Pindahjemaat extends CI_Controller
 	// untuk me-load tampilan form tambah barang
 	public function tambah(){
 
-		$dataPindah_Jemaat = $this->ModelPindahJemaat->getAll();
-		$data = array(
-			"Pindah_Jemaat" => $dataPindah_Jemaat
-		);
+		$data['jemaat'] = $this->ModelJemaat->getAll();
+		
 		$data['title'] = 'Tambah Data Pindah Jemaat';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -46,7 +45,7 @@ class Pindahjemaat extends CI_Controller
 	public function insert()
 	{
 		$data = array(
-			"Nama_Jemaat" => $this->input->post("Nama_Jemaat"),
+			"id_jemaat" => $this->input->post("id_jemaat"),
 			"Gereja_Asal" => $this->input->post("Gereja_Asal"),
 			"Gereja_Tujuan" => $this->input->post("Gereja_Tujuan"),
 			"Alasan_Pindah" => $this->input->post("Alasan_Pindah"),
@@ -56,7 +55,7 @@ class Pindahjemaat extends CI_Controller
 	}
 	public function print()
 	{
-		$dataPindah_Jemaat ['PindahJemaat']= $this->ModelPindahJemaat->getAll();
+		$dataPindah_Jemaat ['PindahJemaat']= $this->ModelPindahJemaat->getAll('jemaat');
 		$this->load->view('content/pindah_jemaat/print_PindahJemaat', $dataPindah_Jemaat);
 	}
 
@@ -80,7 +79,6 @@ class Pindahjemaat extends CI_Controller
 	{
 		$id = $this->input->post('Id_Pindah');
 		$data = array(
-			"Nama_Jemaat" => $this->input->post("Nama_Jemaat"),
 			"Gereja_Asal" => $this->input->post("Gereja_Asal"),
 			"Gereja_Tujuan" => $this->input->post("Gereja_Tujuan"),
 			"Alasan_Pindah" => $this->input->post("Alasan_Pindah"),

@@ -25,19 +25,47 @@
 			<form id="form-tambah-nikah" method="post" action="<?= site_url('nikah/insert') ?>" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label">Nomor Nikah</label>
-					<input required type="text" class="form-control" name="no_nikah">
+					<input required type="number" class="form-control" name="no_nikah">
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Pria</label>
-					<input required type="text" class="form-control" name="nama_pria">
+					<br>
+					<select name="id_jemaat_pria" id="" class="form-control">
+						<option value="" disabled selected>Pilih Data</option>
+						<?php
+						foreach ($jemaat as $j) {
+							if ($j->jk_jemaat == 'L') {
+								echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+							}
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Wanita</label>
-					<input required type="text" class="form-control" name="nama_wanita">
+					<br>
+					<select name="id_jemaat_wanita" id="" class="form-control">
+						<option value="" disabled selected>--pilih data--</option>
+						<?php
+						foreach ($jemaat as $j) {
+							if ($j->jk_jemaat == 'P') {
+								echo "<option value='$j->id_jemaat'>$j->nik_jemaat / $j->nama_jemaat</option>";
+							}
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Pendeta</label>
-					<input required type="text" class="form-control" name="nama_pendeta">
+					<br>
+					<select name="id_pendeta" id="" class="form-control">
+						<option value="" disabled selected>Pilih Data</option>
+						<?php
+						foreach ($pendeta as $p) {
+							echo "<option value='$p->id_pendeta'>$p->nik / $p->nama</option>";
+						}
+						?>
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Saksi Nikah</label>
@@ -63,7 +91,6 @@
 		</div>
 		</form>
 	</div>
-
 </body>
 
 </html>

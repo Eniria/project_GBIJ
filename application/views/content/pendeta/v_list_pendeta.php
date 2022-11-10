@@ -32,7 +32,7 @@
 </head>
 
 <body>
-<div id="content"  style="width: 1500px;">
+	<div id="content" style="width: 1500px;">
 		<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -53,24 +53,24 @@
 				<i class="fa fa-print"></i>Print
 			</a>
 
-			<div class="card-body">
+			<div class="table-responsive text-nowrap">
 				<table class="table table-bordered table-hover table-sm">
 					<thead>
 						<tr style="background-color: #6B6D01;">
-							<th width="2%">No</th>
-							<th width="8%">No SK</th>
-							<th width="10%">NIK</th>
-							<th width="10%">Nama</th>
-							<th width="2%">JK</th>
-							<th width="10%">Tempat Lahir</th>
-							<th width="10%">Tgl Lahir</th>
-							<th width="10%">Asal</th>
-							<th width="10%">Pendidikan</th>
-							<th width="10%">Tgl Mulai</th>
-							<th width="10%">Tgl Selesai</th>
-							<th width="7%">Status</th>
-							<th width="8%">Foto</th>
-							<th width="8%">Action</th>
+							<th>No</th>
+							<th>No SK</th>
+							<th>NIK</th>
+							<th>Nama</th>
+							<th>JK</th>
+							<th>Tempat Lahir</th>
+							<th>Tgl Lahir</th>
+							<th>Asal</th>
+							<th>Pendidikan</th>
+							<th>Tgl Mulai</th>
+							<th>Tgl Selesai</th>
+							<th>Status</th>
+							<th>Foto</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>

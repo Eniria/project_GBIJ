@@ -58,7 +58,7 @@
 						</div>
 						<div class="form-group">
 							<label class="form-label">Tanggal Kematian</label>
-							<input required type="date" value="<?= $jemaat->tanggal_kematian ?>" class="form-control" name="tanggal_kematian">
+							<input  type="date" value="<?= $jemaat->tanggal_kematian ?>" class="form-control" name="tanggal_kematian">
 						</div>
 					</div>
 					<div class="col-6">
@@ -69,6 +69,16 @@
 						<div class="form-group">
 							<label class="form-label">Pekerjaan</label>
 							<input required type="text" value="<?= $jemaat->pekerjaan ?>" class="form-control" name="pekerjaan">
+						</div>
+						<div class="form-group">
+							<label class="form-label">Status Aktif</label>
+							<select required class="form-control" name="status_aktif">
+								<option value="nikah">Nikah</option>
+								<option value="pindah">Pindah</option>
+								<option value="mati">meninggal</option>
+								<option value="berhenti">Berhenti</option>
+								<option value="merantau">Merantau</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="form-label">Status</label>

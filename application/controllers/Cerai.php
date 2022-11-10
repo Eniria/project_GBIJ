@@ -9,11 +9,12 @@ class Cerai extends CI_Controller
 			redirect('auth');
 		}
 		$this->load->model("ModelCerai");
+		$this->load->model('ModelJemaat');
 	}
 
 	public function index()
 	{
-		$dataCerai = $this->ModelCerai->getAll();
+		$dataCerai = $this->ModelCerai->getAll('jemaat');
 		$data = array(
 			"cerais" => $dataCerai
 		);
@@ -30,11 +31,8 @@ class Cerai extends CI_Controller
 	//untuk me-load tampilan form tambah barang
 	public function tambah()
 	{
-		$dataCerai = $this->ModelCerai->getAll();
-		$data = array(
-			"cerais" => $dataCerai
-		);
-
+		
+		$data['jemaat'] = $this->ModelJemaat->getAll();
 		$data['title'] = 'Tambah Data Cerai';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -62,15 +60,17 @@ class Cerai extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$no_surat_cerai = $this->input->post('no_surat_cerai', TRUE);
-			$nama_pria = $this->input->post('nama_pria', TRUE);
-			$nama_wanita = $this->input->post('nama_wanita', TRUE);
+			//$id_jemaat = $this->input->post('id_jemaat', TRUE);
+			$id_jemaat_pria = $this->input->post('id_jemaat_pria', TRUE);
+			$id_jemaat_wanita = $this->input->post('id_jemaat_wanita', TRUE);
 			$tanggal_cerai = $this->input->post('tanggal_cerai', TRUE);
 			$alasan_cerai = $this->input->post('alasan_cerai', TRUE);
 
 			$data = array(
 				'no_surat_cerai' => $no_surat_cerai,
-				'nama_pria' => $nama_pria,
-				'nama_wanita' => $nama_wanita,
+				//'id_jemaat' => $id_jemaat,
+				'id_jemaat_pria' => $id_jemaat_pria,
+				'id_jemaat_wanita' => $id_jemaat_wanita,
 				'tanggal_cerai' => $tanggal_cerai,
 				'alasan_cerai' => $alasan_cerai,
 				'foto' => $foto
@@ -85,7 +85,7 @@ class Cerai extends CI_Controller
 	}
 	public function print()
 	{
-		$dataCerai['cerai'] = $this->ModelCerai->getAll();
+		$dataCerai['cerai'] = $this->ModelCerai->getAll('jemaat');
 		$this->load->view('content/cerai/print_cerai', $dataCerai);
 	}
 
@@ -141,16 +141,16 @@ class Cerai extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$no_surat_cerai = $this->input->post('no_surat_cerai', TRUE);
-			$nama_pria = $this->input->post('nama_pria', TRUE);
-			$nama_wanita = $this->input->post('nama_wanita', TRUE);
+			//$nama_pria = $this->input->post('nama_pria', TRUE);
+			//$nama_wanita = $this->input->post('nama_wanita', TRUE);
 			$tanggal_cerai = $this->input->post('tanggal_cerai', TRUE);
 			$alasan_cerai = $this->input->post('alasan_cerai', TRUE);
 			$id = $this->input->post('id_cerai');
 
 			$data = array(
 				'no_surat_cerai' => $no_surat_cerai,
-				'nama_pria' => $nama_pria,
-				'nama_wanita' => $nama_wanita,
+				//'nama_pria' => $nama_pria,
+				//'nama_wanita' => $nama_wanita,
 				'tanggal_cerai' => $tanggal_cerai,
 				'alasan_cerai' => $alasan_cerai,
 				'foto' => $foto

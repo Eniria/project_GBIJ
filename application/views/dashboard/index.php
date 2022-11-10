@@ -2,7 +2,7 @@
     <div class="card-bo">
         <div class="tab-content p-0">
             <center>
-                <img src="<?= base_url('assets/img/foto dashboard.jpg') ?>" width="100%">
+                <img src="<?= base_url('assets/img/gereja.jpg') ?>" width="110%">
             </center>
         </div>
     </div>

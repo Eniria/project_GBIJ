@@ -28,7 +28,7 @@
 					<input require type="text" value="<?= $cerai->no_surat_cerai ?>" class="form-control" name="no_surat_cerai">
 
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label class="form_label">Nama Pria </label>
 					<input require type="text" value="<?= $cerai->nama_pria ?>" class="form-control" name="nama_pria">
 
@@ -38,7 +38,7 @@
 					<label class="form_label">Nama Wanita</label>
 					<input require type="text" value="<?= $cerai->nama_wanita ?>" class="form-control" name="nama_wanita">
 
-				</div>
+				</div> -->
 
 				<div class="form-group">
 					<label class="form_label">Tgl Perceraian </label>

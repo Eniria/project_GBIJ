@@ -21,9 +21,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 Admin
-            </div>
+            </div> -->
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
@@ -36,9 +36,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 User
-            </div>
+            </div> -->
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('user'); ?>">
@@ -48,14 +48,28 @@
 
             <hr class="sidebar-divider">
             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('user/edit'); ?>">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Edit Profile</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('user/changepassword'); ?>">
+                <i class="fas fa-fw fa-arrow-right"></i>
+                    <span>Ubah Password</span></a>
+            </li>
+
+
+            <hr class="sidebar-divider">
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('jemaat'); ?>">
-                    <i class="fas fa-fw fa-bible"></i>
+                    <i class="fas fa-fw fa-folder-open"></i>
                     <span>Jemaat</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Baptis'); ?>">
-                    <i class="fas fa-fw fa-bible"></i>
+                    <i class="fas fa-fw fa-hand-holding-medical"></i>
                     <span>Baptis</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -67,7 +81,7 @@
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Nikah') ?>">
-                    <i class="fas fa-fw fa-bible"></i>
+                    <i class="fas fa-fw fa-heart"></i>
                     <span>Pernikahan</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -79,16 +93,16 @@
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('PengurusGereja') ?>">
-                    <i class="fas fa-fw fa-bible"></i>
+                    <i class="fas fa-fw fa-files"></i>
                     <span>Pengurus Gereja</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Pindahjemaat') ?>">
-                    <i class="fas fa-fw fa-bible"></i>
+                    <i class="fas fa-fw fa-angles-right"></i>
                     <span>Pindah Jemaat</span></a>
             </li>
-    
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <li class="nav-item">

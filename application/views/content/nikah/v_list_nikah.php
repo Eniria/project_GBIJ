@@ -32,90 +32,94 @@
 </head>
 
 <body>
-	<div id="content"  style="width: 1500px;">
+	<div id="content" style="width: 1500px;">
 		<!-- <div class="card style = width: 1100px ;"> -->
-			<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggleTop">
-							<i class="fa fa-bars"></i>
-						</a>
-					</li>
-				</ul>
-				<div>
-					<h3 style="color: #9A8D8D;">Data Pernikahan </h3>
-				</div>
-			</nav>
-
-			<div class="card-body">
-				<a href="<?= site_url('nikah/tambah') ?>" class="btn btn-primary">
-					<i class="fa fa-plus"></i>Tambah Nikah
-				</a>
-				<a href="<?= site_url('nikah/print') ?>" class="btn btn-warning">
-					<i class="fa fa-print"></i>Print
-				</a>
-				<div class="card-body">
-					<table class="table table-bordered table-hover table-sm">
-						<thead>
-							<tr style="background-color: #6B6D01;">
-								<th>Nomor</th>
-								<th>Nomor Nikah </th>
-								<th>Nama Pria </th>
-								<th>Nama Wanita </th>
-								<th>Nama Pendeta</th>
-								<th>Saksi Nikah</th>
-								<th>Tempat Nikah</th>
-								<th>Tanggal Nikah</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach ($nikahs as $n) {
-							?>
-								<tr>
-									<td><?= $no++ ?></td>
-									<td><?= $n->no_nikah  ?></td>
-									<td><?= $n->nama_pria  ?></td>
-									<td><?= $n->nama_wanita  ?></td>
-									<td><?= $n->nama_pendeta  ?></td>
-									<td><?= $n->saksi_nikah ?></td>
-									<td><?= $n->tempat_nikah  ?></td>
-									<td><?= $n->tanggal_nikah  ?></td>
-									<td>
-										<a href="<?= site_url("nikah/ubah/$n->id_nikah") ?>" class="btn btn-warning btn-sm">
-											<i class="fa fa-pencil"></i>
-										</a>
-										<a href="#" data-id="<?= $n->id_nikah ?>" class="btn btn-danger btn-sm btn-delete-nikah">
-											<i class="fa fa-trash"></i>
-										</a>
-									</td>
-								</tr>
-							<?php
-							}
-							?>
-
-						</tbody>
-					</table>
-				</div>
+		<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggleTop">
+						<i class="fa fa-bars"></i>
+					</a>
+				</li>
+			</ul>
+			<div>
+				<h3 style="color: #9A8D8D;">Data Pernikahan </h3>
 			</div>
-			<div class="modal" id="modal-confirm-delete">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-body">
-							<h4>Anda Yakin Hapus data ini?</h4>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
-							<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
-						</div>
+		</nav>
+
+		<div class="card-body">
+			<a href="<?= site_url('nikah/tambah') ?>" class="btn btn-primary">
+				<i class="fa fa-plus"></i>Tambah Nikah
+			</a>
+			<a href="<?= site_url('nikah/print') ?>" class="btn btn-warning">
+				<i class="fa fa-print"></i>Print
+			</a>
+			<div class="card-body">
+				<table class="table table-bordered table-hover table-sm">
+					<thead>
+						<tr style="background-color: #6B6D01;">
+							<th>Nomor</th>
+							<th>Nomor Nikah </th>
+							<th>Nama Pria </th>
+							<th>Nama Wanita </th>
+							<th>Nama Pendeta</th>
+							<th>Saksi Nikah</th>
+							<th>Tempat Nikah</th>
+							<th>Tanggal Nikah</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						$no = 1;
+						foreach ($nikahs as $n) {
+							$this->db->where('id_jemaat', $n->id_jemaat_pria);
+							$jemaatpria = $this->db->get('jemaat')->row();
+							$this->db->where('id_jemaat', $n->id_jemaat_wanita);
+							$jemaatwanita = $this->db->get('jemaat')->row();
+						?>
+							<tr>
+								<td><?= $no++ ?></td>
+								<td><?= $n->no_nikah  ?></td>
+								<td><?= $jemaatpria->nama_jemaat  ?></td>
+								<td><?= $jemaatwanita->nama_jemaat ?></td>
+								<td><?= $n->nama ?></td>
+								<td><?= $n->saksi_nikah ?></td>
+								<td><?= $n->tempat_nikah  ?></td>
+								<td><?= $n->tanggal_nikah  ?></td>
+								<td>
+									<a href="<?= site_url("nikah/ubah/$n->id_nikah") ?>" class="btn btn-warning btn-sm">
+										<i class="fa fa-pencil"></i>
+									</a>
+									<a href="#" data-id="<?= $n->id_nikah ?>" class="btn btn-danger btn-sm btn-delete-nikah">
+										<i class="fa fa-trash"></i>
+									</a>
+								</td>
+							</tr>
+						<?php
+						}
+						?>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="modal" id="modal-confirm-delete">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h4>Anda Yakin Hapus data ini?</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
+						<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
 					</div>
 				</div>
 			</div>
-			<form id="form-delete" method="post" action="<?= site_url('nikah/delete') ?>">
+		</div>
+		<form id="form-delete" method="post" action="<?= site_url('nikah/delete') ?>">
 
-			</form>
+		</form>
 </body>
 
 </html>

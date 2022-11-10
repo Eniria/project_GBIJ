@@ -1,6 +1,17 @@
 CREATE DATABASE logingbij;
 
 use logingbij;
+create table  user_role (id int not null primary key auto_increment,
+role varchar(128) not null
+);
+
+create table user(id int not null primary key auto_increment,
+nama varchar(128) not null, email varchar(128) not null,
+image varchar(128) not null, passwordd varchar (256) not null,
+role_id int,
+is_active int(1),
+date_created int
+);
 
 			CREATE TABLE jemaat(
 								id_jemaat int not null primary key auto_increment,
@@ -13,6 +24,7 @@ use logingbij;
 								tanggal_kematian VARCHAR (20),
 								alamat varchar(200) not null,
 								pekerjaan varchar(200) not null,
+								status_aktif enum('pindah', 'mati', 'nikah', 'berhenti','merantau'),
 								status_perkawinan enum('Kawin', 'Singgle', 'Janda', 'Duda'),
 								foto VARCHAR(65)
 			);
@@ -30,7 +42,22 @@ CREATE TABLE pendeta(
 						tanggal_mulai DATE,
 						tanggal_selesai DATE,
 						status VARCHAR(20),
-						foto VARCHAR(65));
+						foto VARCHAR(65)
+						);
+	CREATE TABLE baptis(
+		id_baptis int not null primary key auto_increment,
+		id_jemaat int,
+		no_surat_baptis varchar(40) not null,
+		nama_baptis varchar(200) not null,
+		jenis_kelamin enum('Laki-laki', 'Perempuan'),
+		nama_pendeta varchar(200) not null,
+		tempat_baptis varchar(50),
+		tanggal_baptis date,
+		key fk_jemaat_baptis(id_jemaat),
+		key fk_pendeta_baptis(id_pendeta),
+		constraint fk_jemaat_baptis foreign key(id_jemaat)references jemaat (id_jemaat),
+		constraint fk_pendeta_baptis foreign key(id_pendeta)references pendeta (id_pendeta)
+);					
 
 CREATE TABLE nikah (
 					   id_nikah INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -50,7 +77,9 @@ create table Pindah_Jemaat(
 							  Nama_Jemaat varchar(50) not null,
 							  Gereja_Asal varchar(50),
 							  Gereja_Tujuan varchar(50),
-							  Alasan_Pindah Varchar(200)
+							  Alasan_Pindah Varchar(200),
+							  key fk_jemaat_baptis(id_jemaat),
+							  
 );
 
 create table pengurusGereja (
@@ -76,3 +105,6 @@ create table cerai (
     alasan_cerai text,
     foto varchar(200)
 );
+
+ ALTER TABLE namatabel
+DROP FOREIGN KEY namafield;

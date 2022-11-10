@@ -52,7 +52,7 @@
 			<a href="<?= site_url('Pindahjemaat/print') ?>" class="btn btn-danger">
 				<i class="fa fa-print"></i>Print
 			</a>
-			<div class="card-body">
+			<div class="table-responsive text-nowrap">
 				<table class="table">
 					<thead>
 						<tr style="background-color: #6B6D01;">
@@ -71,7 +71,7 @@
 						?>
 							<tr>
 								<td><?= $no++ ?></td>
-								<td><?= $b->Nama_Jemaat  ?></td>
+								<td><?= $b->nama_jemaat  ?></td>
 								<td><?= $b->Gereja_Asal ?></td>
 								<td><?= $b->Gereja_Tujuan ?></td>
 								<td><?= $b->Alasan_Pindah ?></td>

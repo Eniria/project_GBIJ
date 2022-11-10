@@ -53,9 +53,6 @@
 			<a href="<?= site_url('jemaat/print') ?>" class="btn btn-danger">
 				<i class="fa fa-print"></i>Print
 			</a>
-			<!-- <a href="<?= site_url('jemaat/pdf') ?>" class="btn btn-warning">
-				<i class="fa fa-file"></i> Export PDF
-			</a> -->
 			<div class="table-responsive text-nowrap">
 				<table class="table table-bordered table-hover table-sm mt-3">
 					<thead>
@@ -65,11 +62,12 @@
 							<th>Nama </th>
 							<th>JK</th>
 							<th>Tempat Lahir</th>
-							<th>Tanggal Lahir</th>
-							<th>Tanggal Dibaptis</th>
-							<th>Tanggal Kematian</th>
+							<th>Tgl Lahir</th>
+							<th>Tgl Dibaptis</th>
+							<th>Tgl Kematian</th>
 							<th>Alamat</th>
 							<th>Pekerjaan</th>
+							<th>Status Aktif</th>
 							<th>Status</th>
 							<th>Foto</th>
 							<th>Action</th>
@@ -79,11 +77,12 @@
 						<?php
 						$no = 1;
 						foreach ($jemats as $j) {
+							$this->db->where('id_jemaat', $j->id_jemaat);
+							$cekbaptis = $this->db->get('baptis')->row();
 						?>
 							<tr>
 
 								<td><?= $no++ ?></td>
-								<!-- <td><?= $j->no_kk  ?></td> -->
 								<td><?= $j->nik_jemaat  ?></td>
 								<td><?= $j->nama_jemaat  ?></td>
 								<td><?= $j->jk_jemaat ?></td>
@@ -93,15 +92,18 @@
 								<td><?= $j->tanggal_kematian  ?></td>
 								<td><?= $j->alamat  ?></td>
 								<td><?= $j->pekerjaan  ?></td>
+								<td><?= $j->status_aktif  ?></td>
 								<td><?= $j->status_perkawinan  ?></td>
 								<td><img src="<?= base_url() . '/foto/' . $j->foto ?>" width="60px;"></td>
 								<td>
 									<a href="<?= site_url("jemaat/ubah/$j->id_jemaat") ?>" class="btn btn-warning btn-sm">
 										<i class="fa fa-pencil"></i>
 									</a>
-									<a href="#" data-id="<?= $j->id_jemaat ?>" class="btn btn-danger btn-sm btn-delete-jemaat">
-										<i class="fa fa-trash"></i>
-									</a>
+									<?php if (!$cekbaptis) : ?>
+										<a href="#" data-id="<?= $j->id_jemaat ?>" class="btn btn-danger btn-sm btn-delete-jemaat">
+											<i class="fa fa-trash"></i>
+										</a>
+									<?php endif; ?>
 								</td>
 							</tr>
 						<?php

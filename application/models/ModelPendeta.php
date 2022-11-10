@@ -5,9 +5,9 @@ class ModelPendeta extends CI_Model
 	var $table = "pendeta";
 	var $primaryKey = "id_pendeta";
 
-	public function getAll()
+	public function getAll($method = '')
 	{
-		return $this->db->get($this->table)->result();
+			return $this->db->get($this->table)->result();
 	}
 
 	// function untuk get data by primary_key

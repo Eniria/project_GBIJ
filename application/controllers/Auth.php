@@ -43,7 +43,7 @@ class Auth extends CI_Controller
                         'role_id' => $dashboard['role_id']
                     ];
                     $this->session->set_userdata($data);
-                    if ($dashboard ['role_id'] == 1) {
+                    if ($dashboard['role_id'] == 1) {
                         redirect('dashboard');
                     } else {
                         redirect('dashboard');
@@ -67,6 +67,9 @@ class Auth extends CI_Controller
 
     public function registration()
     {
+        // if (!$this->session->userdata('email')) {
+        //     redirect('auth');
+        // }
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'This email has already registered!' //mengubah kalimat peringatan
@@ -116,41 +119,39 @@ class Auth extends CI_Controller
         $this->load->view('auth/blocked');
     }
 
-    public function forgotPassword()
-    {
-        //kalau reset passwordnya gagal
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Forgot Password';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/forgot_password');
-            $this->load->view('templates/auth_footer');
-        } else {
-            $email = $this->input->post('email');
-            $user =  $this->db->get_where('user', ['email' => $email])->row_array();
+    // public function forgotPassword()
+    // {
+    //     //kalau reset passwordnya gagal
+    //     $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+    //     if ($this->form_validation->run() == false) {
+    //         $data['title'] = 'Forgot Password';
+    //         $this->load->view('templates/auth_header', $data);
+    //         $this->load->view('auth/forgot_password');
+    //         $this->load->view('templates/auth_footer');
+    //     } else {
+    //         $email = $this->input->post('email');
+    //         $user =  $this->db->get_where('user', ['email' => $email])->row_array();
 
-            if ($user) {
-                $token = base64_encode(random_bytes(32));
-                $user_token = [
-                    'email' => $email,
-                    'token' => $token,
-                    'date_created' => time()
-                ];
-                $this->db->insert('user_token', $user_token);
-                // $this->_sendEmail($token, 'forgot');
+    //         if ($user) {
+    //             $token = base64_encode(random_bytes(32));
+    //             $user_token = [
+    //                 'email' => $email,
+    //                 'token' => $token,
+    //                 'date_created' => time()
+    //             ];
+    //             $this->db->insert('user_token', $user_token);
+    //             // $this->_sendEmail($token, 'forgot');
 
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-               Cek email anda untuk mereset password! </div>');
-                     redirect('auth/forgotpassword');
-                 }
-
-            }
-        //      else {
-        //         //ketika email belum terdaftar
-        //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        //    Email anda belum terdaftar! </div>');
-        //         redirect('auth/forgotpassword');
-        //     }
-        }
+    //             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    //            Cek email anda untuk mereset password! </div>');
+    //             redirect('auth/forgotpassword');
+    //         }
+    //     }
+    //     //      else {
+    //     //         //ketika email belum terdaftar
+    //     //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+    //     //    Email anda belum terdaftar! </div>');
+    //     //         redirect('auth/forgotpassword');
+    //     //     }
+    // }
 }
-

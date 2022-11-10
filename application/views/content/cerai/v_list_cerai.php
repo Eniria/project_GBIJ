@@ -32,7 +32,7 @@
 </head>
 
 <body>
-	<div id="content"  style="width: 1500px;">
+	<div id="content" style="width: 1500px;">
 		<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
 			<div class="navbar">
 				<ul class="navbar-nav">
@@ -54,10 +54,10 @@
 			<a href="<?= site_url('cerai/print') ?>" class="btn btn-danger">
 				<i class="fa fa-print"></i>Print
 			</a>
-			<a href="<?= site_url('cerai/pdf') ?>" class="btn btn-warning">
+			<!-- <a href="<?= site_url('cerai/pdf') ?>" class="btn btn-warning">
 				<i class="fa fa-file"></i>Export PDF
-			</a>
-			<div style="width: 100%;overflow-x:scroll">
+			</a> -->
+			<div class="table-responsive text-nowrap">
 				<table class="table table-bordered table-hover table-sm mt-3">
 					<thead>
 						<tr style="background-color: #6B6D01;">
@@ -75,6 +75,10 @@
 						<?php
 						$no = 1;
 						foreach ($cerais as $c) {
+							$this->db->where('id_jemaat', $c->id_jemaat_pria);
+							$jemaatpria = $this->db->get('jemaat')->row();
+							$this->db->where('id_jemaat', $c->id_jemaat_wanita);
+							$jemaatwanita = $this->db->get('jemaat')->row();
 						?>
 							<tr>
 

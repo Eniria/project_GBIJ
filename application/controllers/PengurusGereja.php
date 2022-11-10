@@ -14,7 +14,7 @@ class PengurusGereja extends CI_Controller
 
 	public function index()
 	{
-		$dataPengurusGereja = $this->ModelPengurusGereja->getAll();
+		$dataPengurusGereja = $this->ModelPengurusGereja->getAll('jemaat');
 		$data = array(
 			"PengurusGerejas" => $dataPengurusGereja
 		);
@@ -26,14 +26,12 @@ class PengurusGereja extends CI_Controller
 		$this->load->view('content/PengurusGereja/v_list_pengurusGereja', $data);
 		$this->load->view('templates/footer');
 	}
-	//untuk me-load tampilan form tambah barang
+	
 	public function tambah()
 	{
 		$data['jemaat'] = $this->ModelJemaat->getAll();
-		$dataPengurusGereja = $this->ModelPengurusGereja->getAll();
-		$data = array(
-			"PengurusGerejas" => $dataPengurusGereja
-		);
+
+		
 		$data['title'] = 'Tambah Data Pengurus Gereja';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -61,7 +59,7 @@ class PengurusGereja extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$nik = $this->input->post('nik', TRUE);
-			$nama = $this->input->post('nama', TRUE);
+			$id_jemaat = $this->input->post('id_jemaat', TRUE);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
 			$tempat_lahir = $this->input->post('tempat_lahir', TRUE);
 			$tanggal_lahir = $this->input->post('tanggal_lahir', TRUE);
@@ -73,14 +71,14 @@ class PengurusGereja extends CI_Controller
 			$data = array(
 
 				'nik' => $nik,
-				'nama' => $nama,
+				'id_jemaat' => $id_jemaat,
 				'jenis_kelamin' => $jenis_kelamin,
 				'tempat_lahir' => $tempat_lahir,
 				'tanggal_lahir' => $tanggal_lahir,
 				'pendidikan' => $pendidikan,
 				'jabatan' => $jabatan,
 				'alamat' => $alamat,
-				'status_pernikahan' => $status_pernikahan,
+				'status_pernikahan'=>$status_pernikahan,
 				'foto' => $foto
 			);
 			$id = $this->ModelPengurusGereja->insertGetId($data);
@@ -96,8 +94,6 @@ class PengurusGereja extends CI_Controller
 		$dataPengurusGereja['PengurusGereja'] = $this->ModelPengurusGereja->getAll();
 		$this->load->view('content/PengurusGereja/print_pengurus', $dataPengurusGereja);
 	}
-
-
 
 	public function ubah($id)
 	{
@@ -131,7 +127,6 @@ class PengurusGereja extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$nik = $this->input->post('nik', TRUE);
-			$nama = $this->input->post('nama', TRUE);
 			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
 			$tempat_lahir = $this->input->post('tempat_lahir', TRUE);
 			$tanggal_lahir = $this->input->post('tanggal_lahir', TRUE);
@@ -143,14 +138,13 @@ class PengurusGereja extends CI_Controller
 
 			$data = array(
 				'nik' => $nik,
-				'nama' => $nama,
 				'jenis_kelamin' => $jenis_kelamin,
 				'tempat_lahir' => $tempat_lahir,
 				'tanggal_lahir' => $tanggal_lahir,
 				'pendidikan' => $pendidikan,
 				'jabatan' => $jabatan,
 				'alamat' => $alamat,
-				'status_pernikahan' => $status_pernikahan,
+				'status_pernikahan'=>$status_pernikahan,
 				'foto' => $foto
 			);
 			$id = $this->ModelPengurusGereja->update($id, $data);

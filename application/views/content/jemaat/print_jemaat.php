@@ -23,6 +23,7 @@
                 <!-- <th>Tanggal Kematian</th> -->
                 <th>Alamat</th>
                 <th>Pekerjaan</th>
+                <th>Status Aktif</th>
                 <th>Status Perkawinan</th>
                 <th>Foto</th>
             </tr>
@@ -41,9 +42,10 @@
                     <td><?= $j->tempat_lahir ?></td>
                     <td><?= $j->tanggal_lahir  ?></td>
                     <td><?= $j->tanggal_dibaptis  ?></td>
-                    <!-- <td><?= $j->tanggal_kematian  ?></td> -->
+                    <td><?= $j->tanggal_kematian  ?></td>
                     <td><?= $j->alamat  ?></td>
                     <td><?= $j->pekerjaan  ?></td>
+                    <td><?= $j->status_aktif ?></td>
                     <td><?= $j->status_perkawinan  ?></td>
                     <td><img src="<?= base_url() . '/foto/' . $j->foto ?>" width="100px;"></td>
                 </tr>
