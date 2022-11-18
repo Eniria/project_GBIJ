@@ -29,6 +29,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.js"></script>
 </head>
 
 <body>
@@ -46,72 +49,90 @@
 			</div>
 		</nav>
 
-		<div class="card-body">
-			<a href="<?= site_url('jemaat/tambah') ?>" class="btn btn-primary">
-				<i class="fa fa-plus"></i>Tambah Jemaat
-			</a>
-			<a href="<?= site_url('jemaat/print') ?>" class="btn btn-danger">
-				<i class="fa fa-print"></i>Print
-			</a>
-			<div class="table-responsive text-nowrap">
-				<table class="table table-bordered table-hover table-sm mt-3">
-					<thead>
-						<tr style="background-color: #6B6D01;">
-							<th>No</th>
-							<th>NIK </th>
-							<th>Nama </th>
-							<th>JK</th>
-							<th>Tempat Lahir</th>
-							<th>Tgl Lahir</th>
-							<th>Tgl Dibaptis</th>
-							<th>Tgl Kematian</th>
-							<th>Alamat</th>
-							<th>Pekerjaan</th>
-							<th>Status Aktif</th>
-							<th>Status</th>
-							<th>Foto</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$no = 1;
-						foreach ($jemats as $j) {
-							$this->db->where('id_jemaat', $j->id_jemaat);
-							$cekbaptis = $this->db->get('baptis')->row();
-						?>
-							<tr>
-
-								<td><?= $no++ ?></td>
-								<td><?= $j->nik_jemaat  ?></td>
-								<td><?= $j->nama_jemaat  ?></td>
-								<td><?= $j->jk_jemaat ?></td>
-								<td><?= $j->tempat_lahir ?></td>
-								<td><?= $j->tanggal_lahir  ?></td>
-								<td><?= $j->tanggal_dibaptis  ?></td>
-								<td><?= $j->tanggal_kematian  ?></td>
-								<td><?= $j->alamat  ?></td>
-								<td><?= $j->pekerjaan  ?></td>
-								<td><?= $j->status_aktif  ?></td>
-								<td><?= $j->status_perkawinan  ?></td>
-								<td><img src="<?= base_url() . '/foto/' . $j->foto ?>" width="60px;"></td>
-								<td>
-									<a href="<?= site_url("jemaat/ubah/$j->id_jemaat") ?>" class="btn btn-warning btn-sm">
-										<i class="fa fa-pencil"></i>
-									</a>
-									<?php if (!$cekbaptis) : ?>
-										<a href="#" data-id="<?= $j->id_jemaat ?>" class="btn btn-danger btn-sm btn-delete-jemaat">
-											<i class="fa fa-trash"></i>
-										</a>
-									<?php endif; ?>
-								</td>
+		<div class="card">
+			<div class="card-body">
+				<a href="<?= site_url('jemaat/tambah') ?>" class="btn btn-primary">
+					<i class="fa fa-plus"></i>Tambah Jemaat
+				</a>
+				<a href="<?= site_url('jemaat/print') ?>" class="btn btn-danger">
+					<i class="fa fa-print"></i>Print
+				</a>
+				<div class="table-responsive text-nowrap">
+					<table id="btn-jemaat" class="table table-bordered table-hover table-sm mt-5">
+						<thead>
+							<tr style="background-color: #6B6D01;">
+								<th>No</th>
+								<th>NIK </th>
+								<th>Nama </th>
+								<th>JK</th>
+								<th>Tempat Lahir</th>
+								<th>Tgl Lahir</th>
+								<th>Tgl Dibaptis</th>
+								<th>Tgl Kematian</th>
+								<th>Alamat</th>
+								<th>Pekerjaan</th>
+								<th>Status Aktif</th>
+								<th>Status</th>
+								<th>Foto</th>
+								<th>Action</th>
 							</tr>
-						<?php
-						}
-						?>
+						</thead>
+						<tbody>
+							<?php
+							$no = 1;
+							foreach ($jemats as $j) {
+								$this->db->where('id_jemaat', $j->id_jemaat);
+								$cekbaptis = $this->db->get('baptis')->row();
+								$ceknikah = $this->db->get('nikah')->row();
+								$cekcerai = $this->db->get('cerai')->row();
+								$cekpengurusgereja = $this->db->get('PengurusGereja')->row();
+								$cekpindahjemaat = $this->db->get('pindah_Jemaat')->row();
+								$cekmati = $this->db->get('mati')->row();
+							?>
+								<tr>
 
-					</tbody>
-				</table>
+									<td><?= $no++ ?></td>
+									<td><?= $j->nik_jemaat  ?></td>
+									<td><?= $j->nama_jemaat  ?></td>
+									<td><?= $j->jk_jemaat ?></td>
+									<td><?= $j->tempat_lahir ?></td>
+									<td><?= $j->tanggal_lahir  ?></td>
+									<td><?= $j->tanggal_dibaptis  ?></td>
+									<td><?= $j->tanggal_kematian  ?></td>
+									<td><?= $j->alamat  ?></td>
+									<td><?= $j->pekerjaan  ?></td>
+									<td><?= $j->status_aktif  ?></td>
+									<td><?= $j->status_perkawinan  ?></td>
+									<td><img src="<?= base_url() . '/foto/' . $j->foto ?>" width="60px;"></td>
+									<td>
+										<a href="<?= site_url("jemaat/ubah/$j->id_jemaat") ?>" class="btn btn-warning btn-sm">
+											<i class="fa fa-pencil"></i>
+										</a>
+										<?php if (!$cekbaptis) : ?>
+											<?php if (!$ceknikah) : ?>
+												<?php if (!$cekcerai) : ?>
+													<?php if (!$cekpengurusgereja) : ?>
+														<?php if (!$cekpindahjemaat) : ?>
+															<?php if (!$cekmati) : ?>
+
+																<a href="#" data-id="<?= $j->id_jemaat ?>" class="btn btn-danger btn-sm btn-delete-jemaat">
+																	<i class="fa fa-trash"></i>
+																</a>
+															<?php endif; ?>
+														<?php endif; ?>
+													<?php endif; ?>
+												<?php endif; ?>
+											<?php endif; ?>
+										<?php endif; ?>
+									</td>
+								</tr>
+							<?php
+							}
+							?>
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -155,4 +176,9 @@
 			$("#modal-confirm-delete").modal('hide');
 		});
 	})
+</script>
+<script>
+	$(function() {
+		$('#btn-jemaat').DataTable();
+	});
 </script>

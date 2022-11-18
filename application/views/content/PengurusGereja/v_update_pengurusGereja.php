@@ -32,11 +32,11 @@
 
 						</div>
 
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="form_label">Nama</label>
 							<input require type="text" value="<?= $PengurusGereja->nama ?>" class="form-control" name="nama">
 
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<label class="form_label">Jenis Kelamin </label>

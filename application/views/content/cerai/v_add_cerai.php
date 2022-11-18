@@ -25,7 +25,7 @@
 			<form id="form-tambah-cerai" method="post" action="<?= site_url('cerai/insert') ?>" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label">Nomor Surat Perceraian</label>
-					<input required type="text" class="form-control" name="no_surat_cerai">
+					<input required type="number" class="form-control" name="no_surat_cerai">
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Pria</label>

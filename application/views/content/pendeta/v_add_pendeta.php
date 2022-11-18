@@ -27,11 +27,11 @@
 					<div class="col-6">
 						<div class="form-group">
 							<label class="form-label">Nomor SK</label>
-							<input require type="text" class="form-control" name="no_sk" required="">
+							<input require type="number" class="form-control" name="no_sk" required="">
 						</div>
 						<div class="form-group">
 							<label class="form-label">NIK</label>
-							<input require type="text" class="form-control" name="nik" required="">
+							<input require type="number" class="form-control" name="nik" required="">
 						</div>
 						<div class="form-group">
 							<label class="form-label">Nama Pendeta</label>

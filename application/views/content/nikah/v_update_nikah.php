@@ -25,11 +25,8 @@
 		<form id="form-update-nikah" method="post" action="<?= site_url('nikah/update') ?>" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="form_label">Nomor Nikah </label>
-				<input require type="text" value="<?= $nikah->no_nikah?>" class="form-control" name="no_nikah">
-
+				<input require type="number" value="<?= $nikah->no_nikah?>" class="form-control" name="no_nikah">
 			</div>
-
-
 			<div class="form-group">
 				<label class="form_label">Saksi Nikah </label>
 				<input require type="text" value="<?= $nikah->saksi_nikah?>" class="form-control" name="saksi_nikah">
@@ -67,23 +64,23 @@
 				$("#form-update-nikah").submit()
 			}
 		})
-		$("#form-update-barang").validates({
-			rules: {
-				harga_barang: {
-					digits: true
-				},
-				jumlah_barang: {
-					digits: true
-				}
-			},
-			errorElement: 'span',
-			errorPlacement: function(error, element) {
-				error.addClass('invalid-feedback');
-				element.closest('.form-group').append(error);
-			},
-			highlight: function(element, errorClass, validClass) {
-				$(element).addClass('is-invalid');
-			}
-		})
+		// $("#form-update-barang").validates({
+		// 	rules: {
+		// 		harga_barang: {
+		// 			digits: true
+		// 		},
+		// 		jumlah_barang: {
+		// 			digits: true
+		// 		}
+		// 	},
+		// 	errorElement: 'span',
+		// 	errorPlacement: function(error, element) {
+		// 		error.addClass('invalid-feedback');
+		// 		element.closest('.form-group').append(error);
+		// 	},
+		// 	highlight: function(element, errorClass, validClass) {
+		// 		$(element).addClass('is-invalid');
+		// 	}
+		// })
 	})
 </script>

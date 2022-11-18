@@ -84,8 +84,8 @@
 
 								<td><?= $no++ ?></td>
 								<td><?= $c->no_surat_cerai  ?></td>
-								<td><?= $c->nama_pria  ?></td>
-								<td><?= $c->nama_wanita  ?></td>
+								<td><?= $jemaatpria->nama_jemaat  ?></td>
+								<td><?= $jemaatwanita->nama_jemaat ?></td>
 								<td><?= $c->tanggal_cerai ?></td>
 								<td><?= $c->alasan_cerai ?></td>
 								<td><img src="<?= base_url() . '/foto/' . $c->foto ?>" width="100px;"></td>

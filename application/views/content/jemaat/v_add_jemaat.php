@@ -28,7 +28,7 @@
 					<div class="col-6">
 						<div class="form-group">
 							<label class="form-label">NIK Jemaat</label>
-							<input required type="text" class="form-control" name="nik_jemaat">
+							<input required type="number" class="form-control" name="nik_jemaat">
 						</div>
 						<div class="form-group">
 							<label class="form-label">Nama Jemaat</label>

@@ -25,7 +25,7 @@
             foreach ($PindahJemaat as $b) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $b->Nama_Jemaat  ?></td>
+                    <td><?= $b->nama_jemaat  ?></td>
                     <td><?= $b->Gereja_Asal ?></td>
                     <td><?= $b->Gereja_Tujuan ?></td>
                     <td><?= $b->Alasan_Pindah ?></td>

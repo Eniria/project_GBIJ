@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>List Pendeta</title>
+	<title>List Keluarga</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
 
 <body>
 	<div id="content" style="width: 1500px;">
-		<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #173014;">
+		<nav class="navbar navbar-expand navbar-light mb-4 static-top shadow" style="background-color: #173014;">
 			<ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggleTop">
@@ -42,114 +42,86 @@
 				</li>
 			</ul>
 			<div>
-				<h3 style="color: #9A8D8D;">Data Pendeta</h3>
+				<h3 style="color: #9A8D8D;">Data Keluarga</h3>
 			</div>
 		</nav>
 		<div class="card-body">
-			<a href="<?= site_url('pendeta/tambah') ?>" class="btn btn-primary">
-				<i class="fa fa-plus"></i>Tambah Pendeta
+			<a href="<?= site_url('keluarga/tambah') ?>" class="btn btn-primary">
+				<i class="fa fa-plus"></i>Tambah Data
 			</a>
-			<a href="<?= site_url('pendeta/print') ?>" class="btn btn-danger">
-				<i class="fa fa-print"></i>Print
+			<a href="<?= site_url('keluarga/print') ?>" class="btn btn-danger">
+				<i class="fa fa-print"></i>Print Data
 			</a>
-
-			<div class="table-responsive text-nowrap mt-3">
-				<table class="table table-bordered table-hover table-sm">
+			<div class="table-responsive text-nowrap">
+				<table class="table table-striped mt-3">
 					<thead>
-						<tr style="background-color: #6B6D01;">
-							<th>No</th>
-							<th>No SK</th>
-							<th>NIK</th>
-							<th>Nama</th>
-							<th>JK</th>
-							<th>Tempat Lahir</th>
-							<th>Tgl Lahir</th>
-							<th>Asal</th>
-							<th>Pendidikan</th>
-							<th>Tgl Mulai</th>
-							<th>Tgl Selesai</th>
-							<th>Status</th>
-							<th>Foto</th>
-							<th>Action</th>
+						<tr>
+							<th>NO</th>
+							<th>NOMOR KARTU KELUARGA</th>
+							<th>NAMA KEPALA KELUARGA</th <br>
+							<th>ACTION</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$no = 1;
-						foreach ($pendetas as $p) {
-							$this->db->where('id_pendeta', $p->id_pendeta);
-							$ceknikah = $this->db->get('nikah')->row();
-							$cekcerai = $this->db->get('cerai')->row();
+						foreach ($keluargas as $k) {
 						?>
 							<tr>
 								<td><?= $no++ ?></td>
-								<td><?= $p->no_sk  ?></td>
-								<td><?= $p->nik  ?></td>
-								<td><?= $p->nama  ?></td>
-								<td><?= $p->jk ?></td>
-								<td><?= $p->tempat_lahir ?></td>
-								<td><?= $p->tanggal_lahir  ?></td>
-								<td><?= $p->asal  ?></td>
-								<td><?= $p->pendidikan  ?></td>
-								<td><?= $p->tanggal_mulai  ?></td>
-								<td><?= $p->tanggal_selesai  ?></td>
-								<td><?= $p->status  ?></td>
-								<td><img src="<?= base_url() . '/foto/' . $p->foto ?>" width="50px;"></td>
+								<td><?= $k->nomorKK  ?></td>
+								<td><?= $k->namaKK  ?></td>
 								<td>
-									<a href="<?= site_url("pendeta/ubah/$p->id_pendeta") ?>" class="btn btn-warning btn-sm">
+									<a href="<?= site_url("keluarga/ubah/$k->id_keluarga") ?>" class="btn btn-warning btn-sm">
 										<i class="fa fa-pencil"></i>
 									</a>
-									<?php if (!$ceknikah) : ?>
-									<?php if (!$cekcerai) : ?>
-
-									<a href="#" data-id="<?= $p->id_pendeta ?>" class="btn btn-danger btn-sm btn-delete-pendeta">
+									<a href="#" data-id="<?= $k->id_keluarga ?>" class="btn btn-danger btn-sm btn-delete-keluarga">
 										<i class="fa fa-trash"></i>
 									</a>
-									<?php endif; ?>
-									<?php endif; ?>
 								</td>
 							</tr>
 						<?php
 						}
 						?>
-
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="modal" id="modal-confirm-delete">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body">
-						<h4>Anda Yakin Hapus data ini?</h4>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
-						<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
-					</div>
+	</div>
+	</div>
+	<div class="modal" id="modal-confirm-delete">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h4>Anda Yakin Hapus data ini?</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
+					<button type="button" class="btn btn-danger" id="btn-delete">Hapus</button>
 				</div>
 			</div>
 		</div>
-		<form id="form-delete" method="post" action="<?= site_url('pendeta/delete') ?>">
+	</div>
+	<form id="form-delete" method="post" action="<?= site_url('keluarga/delete') ?>">
 
-		</form>
+	</form>
 </body>
 
 </html>
 <script>
 	$(function() {
-		let idPendeta = 0
-		$(".btn-delete-pendeta").on("click", function() {
-			idPendeta = $(this).data("id");
-			console.log(idPendeta);
+		let nomorKK = 0
+		$(".btn-delete-keluarga").on("click", function() {
+			nomorKK = $(this).data("id");
+			console.log(nomorKK);
 			$("#modal-confirm-delete").modal('show');
 		});
 		$("#btn-delete").on("click", function() {
 			//panggil url untuk hapus data
 			let inputId = $("<input>")
 				.attr("type", "hidden")
-				.attr("name", "id_pendeta")
-				.val(idPendeta);
+				.attr("name", "nomorKK")
+				.val(nomorKK);
 			let formDelete = $("#form-delete");
 			formDelete.empty().append(inputId);
 			formDelete.submit();

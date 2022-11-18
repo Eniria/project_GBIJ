@@ -52,7 +52,7 @@
 			<a href="<?= site_url('Pindahjemaat/print') ?>" class="btn btn-danger">
 				<i class="fa fa-print"></i>Print
 			</a>
-			<div class="table-responsive text-nowrap">
+			<div class="table-responsive text-nowrap mt-3">
 				<table class="table">
 					<thead>
 						<tr style="background-color: #6B6D01;">

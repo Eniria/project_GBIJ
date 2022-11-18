@@ -91,7 +91,7 @@ class PengurusGereja extends CI_Controller
 	}
 	public function print()
 	{
-		$dataPengurusGereja['PengurusGereja'] = $this->ModelPengurusGereja->getAll();
+		$dataPengurusGereja['PengurusGereja'] = $this->ModelPengurusGereja->getAll('jemaat');
 		$this->load->view('content/PengurusGereja/print_pengurus', $dataPengurusGereja);
 	}
 

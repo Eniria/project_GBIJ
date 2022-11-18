@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Ubah Data Perceraian</title>
+	<title>Ubah Data Kematiian</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -19,24 +19,33 @@
 <body>
 	<div style="width: 1200px ;" class="card">
 		<div class="card-header">
-			<h3>Ubah Data Perceraian</h3>
+			<h3>Ubah Data Kematiaan</h3>
 		</div>
 		<div class="card-body">
-			<form id="form-update-cerai" method="post" action="<?= site_url('cerai/update') ?>" enctype="multipart/form-data">
+			<form id="form-update-mati" method="post" action="<?= site_url('mati/update') ?>" enctype="multipart/form-data">
+		
 				<div class="form-group">
-					<label class="form_label">Nomor Surat Perceraian </label>
-					<input require type="number" value="<?= $cerai->no_surat_cerai ?>" class="form-control" name="no_surat_cerai">
-
+					<label class="form_label">Jenis Kelamin </label>
+					<select required class="form-control" name="jk_mati">
+						<option value="Laki-laki">Laki-laki</option>
+						<option value="Perempuan">Perempuan</option>
+					</select>
 				</div>
 
 				<div class="form-group">
-					<label class="form_label">Tgl Perceraian </label>
-					<input require type="date" value="<?= $cerai->tanggal_cerai ?>" class="form-control" name="tanggal_cerai">
+					<label class="form_label">Tempat Kematiaan </label>
+					<input require type="text" value="<?= $mati->tempat_mati ?>" class="form-control" name="tempat_mati">
 				</div>
 
 				<div class="form-group">
-					<label class="form_label">alasan_cerai</label>
-					<input require type="text" value="<?= $cerai->alasan_cerai ?>" class="form-control" name="alasan_cerai">
+					<label class="form_label">Tanggal Kematiaan </label>
+					<input require type="date" value="<?= $mati->tanggal_mati ?>" class="form-control" name="tanggal_mati">
+				</div>
+
+				<div class="form-group">
+					<label class="form_label">Alasan Kematiaan </label>
+					<input require type="text" value="<?= $mati->alasan_mati ?>" class="form-control" name="alasan_mati">
+
 				</div>
 
 				<div class="form-group">
@@ -44,13 +53,14 @@
 					<input require type="file" class="form-control" name="userfile" size="20" required="">
 				</div>
 
-				<input type="hidden" name="id_cerai" value="<?= $cerai->id_cerai ?>">
+				<input type="hidden" name="id_mati" value="<?= $mati->id_mati ?>">
+
 		</div>
 		<div class="card-footer">
-			<button type="submit" id="btn-update-cerai" class="btn btn-success btn-sm">
+			<button type="submit" id="btn-update-mati" class="btn btn-success btn-sm">
 				<i class="fa fa-save"></i> Simpan
 			</button>
-			<a href="<?= site_url('cerai') ?>" class="btn btn-primary btn-sm">
+			<a href="<?= site_url('mati') ?>" class="btn btn-primary btn-sm">
 				<i class="fa fa-reply"></i>Kembali
 			</a>
 		</div>
@@ -61,10 +71,10 @@
 </html>
 <script>
 	$(function() {
-		$("#btn-update-cerai").on("click", function() {
-			let validate = $("#form-update-cerai").valid()
+		$("#btn-update-mati").on("click", function() {
+			let validate = $("#form-update-mati").valid()
 			if (validate) {
-				$("#form-update-cerai").submit()
+				$("#form-update-mati").submit()
 			}
 		})
 		$("#form-update-barang").validates({

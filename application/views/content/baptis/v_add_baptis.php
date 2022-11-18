@@ -25,7 +25,7 @@
 			<form id="form-tambah-baptis" method="post" action="<?= site_url('baptis/insert') ?>" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label">Nomor Surat Baptis</label>
-					<input required type="text" class="form-control" name="no_surat_baptis">
+					<input required type="number" class="form-control" name="no_surat_baptis">
 				</div>
 				<div class="form-group">
 					<label class="form-label">Nama Jemaat</label>
@@ -50,15 +50,16 @@
 						}
 						?>
 					</select>
-
 				</div>
-				<!-- <div class="form-group">
-					<label class="form-label">Jenis Kelamin</label>
+
+				<div class="form-group">
+					<label class="form_label">Jenis Kelamin </label>
 					<select required class="form-control" name="jenis_kelamin">
-						<option value="L">Laki-laki</option>
-						<option value="P">Perempuan</option>
+						<option value="Laki-laki">Laki-laki</option>
+						<option value="Perempuan">Perempuan</option>
 					</select>
-				</div> -->
+				</div>
+				
 				<div class="form-group">
 					<label class="form-label">Tempat Baptis</label>
 					<input required type="text" class="form-control" name="tempat_baptis">

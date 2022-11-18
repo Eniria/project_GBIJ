@@ -33,7 +33,7 @@
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $PG->nik  ?></td>
-                    <td><?= $PG->nama  ?></td>
+                    <td><?= $PG->nama_jemaat  ?></td>
                     <td><?= $PG->jenis_kelamin ?></td>
                     <td><?= $PG->tempat_lahir ?></td>
                     <td><?= $PG->tanggal_lahir  ?></td>
@@ -41,7 +41,7 @@
                     <td><?= $PG->jabatan  ?></td>
                     <td><?= $PG->alamat  ?></td>
                     <td><?= $PG->status_pernikahan  ?></td>
-                    <td><img src="<?= base_url() . '/foto/' . $PG->foto ?>" width="100px;"></td>
+                    <td><img src="<?= base_url() . '/foto/' . $PG->foto ?>" width="70px;"></td>
                 </tr>
             <?php endforeach ?>
         </tbody>

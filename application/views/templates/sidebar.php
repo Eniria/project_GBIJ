@@ -55,11 +55,17 @@
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('user/changepassword'); ?>">
-                <i class="fas fa-fw fa-arrow-right"></i>
+                    <i class="fas fa-fw fa-arrow-right"></i>
                     <span>Ubah Password</span></a>
             </li>
 
 
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('keluarga'); ?>">
+                    <i class="fas fa-fw fa-house-user"></i>
+                    <span>Keluarga</span></a>
+            </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('jemaat'); ?>">
@@ -93,14 +99,20 @@
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('PengurusGereja') ?>">
-                    <i class="fas fa-fw fa-files"></i>
+                    <i class="fas fa-fw fa-file"></i>
                     <span>Pengurus Gereja</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Pindahjemaat') ?>">
-                    <i class="fas fa-fw fa-angles-right"></i>
+                    <i class="fas fa-fw fa-arrow-right"></i>
                     <span>Pindah Jemaat</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('mati') ?>">
+                    <i class="fas fa-fw fa-cross"></i>
+                    <span>Kematian</span></a>
             </li>
 
             <!-- Divider -->

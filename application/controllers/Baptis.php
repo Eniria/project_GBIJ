@@ -87,7 +87,6 @@ class Baptis extends CI_Controller
 		$id = $this->input->post('id_baptis');
 		$data = array(
 			"no_surat_baptis" => $this->input->post("no_surat_baptis"),
-			// "nama_pendeta" => $this->input->post("nama_pendeta"),
 			"jenis_kelamin" => $this->input->post("jenis_kelamin"),
 			"tempat_baptis" => $this->input->post("tempat_baptis"),
 			"tanggal_baptis" => $this->input->post("tanggal_baptis"),

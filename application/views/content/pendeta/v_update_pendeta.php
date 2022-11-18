@@ -27,12 +27,12 @@
 					<div class="col-6">
 						<div class="form-group">
 							<label class="form_label">Nomor SK </label>
-							<input require type="text" value="<?= $pendeta->no_sk ?>" class="form-control" name="no_sk">
+							<input require type="number" value="<?= $pendeta->no_sk ?>" class="form-control" name="no_sk">
 
 						</div>
 						<div class="form-group">
 							<label class="form_label">NIK </label>
-							<input require type="text" value="<?= $pendeta->nik ?>" class="form-control" name="nik">
+							<input require type="number" value="<?= $pendeta->nik ?>" class="form-control" name="nik">
 
 						</div>
 

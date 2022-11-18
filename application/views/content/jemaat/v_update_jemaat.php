@@ -31,7 +31,7 @@
 						</div> -->
 						<div class="form-group">
 							<label class="form-label">NIK</label>
-							<input required type="text" value="<?= $jemaat->nik_jemaat ?>" class="form-control" name="nik_jemaat">
+							<input required type="number" value="<?= $jemaat->nik_jemaat ?>" class="form-control" name="nik_jemaat">
 						</div>
 						<div class="form-group">
 							<label class="form-label">Nama</label>

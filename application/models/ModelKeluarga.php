@@ -1,13 +1,13 @@
 <?php
 
-class ModelPendeta extends CI_Model
-{
-	var $table = "pendeta";
-	var $primaryKey = "id_pendeta";
+class ModelKeluarga extends CI_Model {
+	var $table = "keluarga";
+	var $primaryKey = "id_keluarga";
 
+	// function untuk get all data nikah
 	public function getAll()
 	{
-			return $this->db->get($this->table)->result();
+		return $this->db->get($this->table)->result();
 	}
 
 	// function untuk get data by primary_key
@@ -41,3 +41,5 @@ class ModelPendeta extends CI_Model
 
 	}
 }
+
+

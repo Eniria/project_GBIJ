@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Ubah Data Baptis</title>
+	<title>Tambah Data Keluarga</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -19,60 +19,43 @@
 <body>
 <div style="width: 1200px ;" class="card">
 	<div class="card-header">
-		<h3>Ubah Data Baptis</h3>
+		<h3>Tambah Data Keluarga</h3>
 	</div>
 	<div class="card-body">
-		<form id="form-update-baptis" method="post" action="<?= site_url('baptis/update') ?>" enctype="multipart/form-data">
+		<form id="form-tambah-keluarga" method="post" action="<?= site_url('keluarga/insert') ?>" enctype="multipart/form-data">
 			<div class="form-group">
-				<label class="form_label">No Surat Baptis </label>
-				<input require type="number" value="<?= $baptis->no_surat_baptis ?>" class="form-control" name="no_surat_baptis">
-
+				<label class="form-label">Nomor Kartu Keluarga</label>
+				<input required type="text" class="form-control" name="nomorKK" placeholder="Masukkan Nomor Kartu Keluarga">
 			</div>
-
 			<div class="form-group">
-				<label class="form_label">Jenis Kelamin </label>
-				<select required class="form-control" name="jenis_kelamin">
-					<option value="Laki-laki">Laki-laki</option>
-					<option value="Perempuan">Perempuan</option>
-				</select>
-
+				<label class="form-label">Nama Kepala Keluarga</label>
+				<input required type="text" class="form-control" name="namaKK" placeholder="Masukkan nama kepala keluarga">
 			</div>
-
-			<div class="form-group">
-				<label class="form_label">Tempat Baptis </label>
-				<input require type="text" value="<?= $baptis->tempat_baptis ?>" class="form-control" name="tempat_baptis">
-			</div>
-
-			<div class="form-group">
-				<label class="form_label">Tanggal Baptis </label>
-				<input require type="date" value="<?= $baptis->tanggal_baptis ?>" class="form-control" name="tanggal_baptis">
-			</div>
-
-			<input type="hidden" name="id_baptis" value="<?= $baptis->id_baptis ?>">
-
 	</div>
+
 	<div class="card-footer">
-		<button type="submit" id="btn-update-baptis" class="btn btn-success btn-sm">
-			<i class="fa fa-save"></i> Simpan
+		<button type="submit" id="btn-save-keluarga" class="btn btn-success btn-sm">
+			<i class="fa fa-save"></i>Simpan
 		</button>
-		<a href="<?= site_url('baptis') ?>" class="btn btn-primary btn-sm">
+		<a href="<?= site_url('keluarga') ?>" class="btn btn-primary btn-sm">
 			<i class="fa fa-reply"></i>Kembali
 		</a>
-		</form>
 	</div>
+	</form>
 </div>
+
 </body>
 
 </html>
 <script>
 	$(function() {
-		$("#btn-update-baptis").on("click", function() {
-			let validate = $("#form-update-baptis").valid()
+		$("#btn-save-keluarga").on("click", function() {
+			let validate = $("#form-tambah-keluarga").valid()
 			if (validate) {
-				$("#form-update-baptis").submit()
+				$("#form-tambah-keluarga").submit()
 			}
 		})
-		$("#form-update-barang").validates({
+		$("#form-tambah-keluarga").validates({
 			rules: {
 				harga_barang: {
 					digits: true

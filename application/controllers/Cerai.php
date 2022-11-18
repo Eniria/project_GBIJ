@@ -33,6 +33,7 @@ class Cerai extends CI_Controller
 	{
 		
 		$data['jemaat'] = $this->ModelJemaat->getAll();
+		
 		$data['title'] = 'Tambah Data Cerai';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -60,7 +61,6 @@ class Cerai extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$no_surat_cerai = $this->input->post('no_surat_cerai', TRUE);
-			//$id_jemaat = $this->input->post('id_jemaat', TRUE);
 			$id_jemaat_pria = $this->input->post('id_jemaat_pria', TRUE);
 			$id_jemaat_wanita = $this->input->post('id_jemaat_wanita', TRUE);
 			$tanggal_cerai = $this->input->post('tanggal_cerai', TRUE);
@@ -68,7 +68,6 @@ class Cerai extends CI_Controller
 
 			$data = array(
 				'no_surat_cerai' => $no_surat_cerai,
-				//'id_jemaat' => $id_jemaat,
 				'id_jemaat_pria' => $id_jemaat_pria,
 				'id_jemaat_wanita' => $id_jemaat_wanita,
 				'tanggal_cerai' => $tanggal_cerai,

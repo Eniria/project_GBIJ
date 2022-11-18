@@ -1,13 +1,18 @@
 <?php
 
-class ModelPendeta extends CI_Model
-{
-	var $table = "pendeta";
-	var $primaryKey = "id_pendeta";
+class ModelMati extends CI_Model{
+	var $table = "mati";
+	var $primaryKey = "id_mati";
 
-	public function getAll()
+	// function untuk get all data mati
+	public function getAll($method = "")
 	{
+		if($method == '') {
 			return $this->db->get($this->table)->result();
+		} elseif($method == 'jemaat'){
+			$this->db->join('jemaat','jemaat.id_jemaat=mati.id_jemaat');
+			return $this->db->get($this->table)->result();
+		}
 	}
 
 	// function untuk get data by primary_key
@@ -41,3 +46,5 @@ class ModelPendeta extends CI_Model
 
 	}
 }
+
+

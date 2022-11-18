@@ -9,7 +9,6 @@ class ModelCerai extends CI_Model
 	public function getAll($method = '')
 	{
 		if ($method == '') {
-
 			return $this->db->get($this->table)->result();
 		} elseif ($method == 'jemaat') {
 			// $this->db->join('jemaat', 'jemaat.id_jemaat=cerai.id_jemaat');

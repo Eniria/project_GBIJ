@@ -30,9 +30,11 @@
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $n->no_nikah  ?></td>
-                    <td><?= $n->nama_pria  ?></td>
-                    <td><?= $n->nama_wanita  ?></td>
-                    <td><?= $n->nama_pendeta  ?></td>
+                    <td><?= $n->id_jemaat_pria  ?></td>
+                    <td><?= $n->id_jemaat_wanita ?></td>
+                    <!-- <td><?= $n->$jemaatpria->nama_jemaat  ?></td>
+                    <td><?= $n->$jemaatwanita->nama_jemaat ?></td> -->
+                    <td><?= $n->nama ?></td>
                     <td><?= $n->saksi_nikah ?></td>
                     <td><?= $n->tempat_nikah  ?></td>
                     <td><?= $n->tanggal_nikah  ?></td>

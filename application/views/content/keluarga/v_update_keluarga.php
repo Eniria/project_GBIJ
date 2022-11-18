@@ -1,6 +1,8 @@
+<!doctype html>
 <html>
+
 <head>
-	<title>Ubah udah data</title>
+	<title>Form Ubah Keluarga</title>
 	<!-- CSS only CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -17,32 +19,33 @@
 <body>
 	<div style="width: 1200px ;" class="card">
 		<div class="card-header">
-			<h3>ubah data perpindahan</h3>
+			<h3>Ubah Data Keluarga</h3>
 		</div>
 		<div class="card-body">
-			<form id="form-update" method="post" action="<?= site_url('Pindahjemaat/update') ?>" enctype="multipart/form-data">
-				
-				<div class="form-group">
-					<label class="form-label">Gereja Asal</label>
-					<input require type="text" value="<?= $Pindah_Jemaat->Gereja_Asal ?>" class="form-control" name="Gereja_Asal">
+			<form id="form-update-keluarga" method="post" action="<?= site_url('keluarga/update') ?>" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label class="form_label">Nomor KK </label>
+							<input require type="text" value="<?= $keluarga->nomorKK ?>" class="form-control" name="nomorKK">
+
+						</div>
+						<div class="form-group">
+							<label class="form_label">Nama Kepala Keluarga </label>
+							<input require type="text" value="<?= $keluarga->namaKK ?>" class="form-control" name="namaKK">
+
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label class="form-label">Gereja Tujuan</label>
-					<input require type="text" value="<?= $Pindah_Jemaat->Gereja_Tujuan ?>" class="form-control" name="Gereja_Tujuan">
-				</div>
-				<div class="form-group">
-					<label class="form-label">Alasan Pindah</label>
-					<input require type="text" value="<?= $Pindah_Jemaat->Alasan_Pindah ?>" class="form-control" name="Alasan_Pindah">
-				</div>
-				<input type="hidden" name="Id_Pindah" value="<?= $Pindah_Jemaat->Id_Pindah ?>">
+				<input type="hidden" name="id_keluarga" value="<?= $keluarga->id_keluarga ?>">
 
 		</div>
 		<div class="card-footer">
-			<button type="submit" id="btn-update" class="btn btn-success btn-sm">
+			<button type="submit" id="btn-update-keluarga" class="btn btn-success btn-sm">
 				<i class="fa fa-save"></i> Simpan
 			</button>
-			<a href="<?= site_url('Pindahjemaat') ?>" class="btn btn-primary btn-sm">
-				<i class="fa fa-reply"></i> Kembali
+			<a href="<?= site_url('keluarga') ?>" class="btn btn-primary btn-sm">
+				<i class="fa fa-reply"></i>Kembali
 			</a>
 		</div>
 		</form>
@@ -50,14 +53,14 @@
 </body>
 
 </html>
-
 <script>
 	$(function() {
-		$("#btn-update").on("click", function() {
-			let validate = $("#form-update").valid()
+		$("#btn-update-pendeta").on("click", function() {
+			let validate = $("#form-update-pendeta").valid()
 			if (validate) {
-				$("#form-update").submit()
+				$("#form-update-pendeta").submit()
 			}
-		})
-	})
+		});
+
+	});
 </script>
